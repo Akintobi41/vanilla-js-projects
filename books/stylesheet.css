@@ -1,0 +1,247 @@
+.main-content {
+  min-height: 100vh;
+  height: auto;
+  overflow: hidden;
+}
+header {
+  margin-bottom: 3rem;
+}
+.book-link {
+  opacity: 0.4;
+}
+.book-catalogue {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 0.5rem;
+}
+.book-1,
+.book-2,
+.book-3 {
+  width: 95%;
+  height: 20rem;
+  /* margin-left: 1.5rem; */
+  margin-top: 1rem;
+  background-color: red;
+}
+.extras {
+  padding: 1rem;
+  border-top: solid 1px rgb(128 128 128 / 30%);
+}
+.view-more {
+  text-decoration: none;
+  color: #000;
+  text-align: center;
+  border: solid 1px orange;
+  padding: 1rem;
+}
+.book-header {
+  padding: 1rem;
+}
+.book-header-title {
+  color: #100f0f;
+  font-size: 1.2rem;
+  font-weight: bold;
+  line-height: 35px;
+}
+.recently-added {
+  margin-top: 1rem;
+  padding: 0rem 1rem;
+}
+.recently-added p {
+  font-size: 0.9rem;
+  color: #100f0f;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  padding-bottom: 0.5rem;
+  border-bottom: solid 1px rgb(128 128 128 / 30%);
+}
+.book-titles {
+  display: flex;
+  flex-direction: column;
+  padding: 0 1rem;
+  margin-bottom: 2rem;
+}
+.book-titles article {
+  display: flex;
+  width: 100%;
+  height: 10rem;
+  margin-top: 0.7rem;
+}
+
+.book-titles article:active {
+  background: #edebe747;
+}
+
+figure {
+  width: 60%;
+  margin-right: 0.5rem;
+}
+
+.section-image-1,
+.section-image-2,
+.section-image-3 {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  padding: 0.5rem 0;
+  color: #000;
+  font-weight: bold;
+  margin-top: 0.5rem;
+  width: 68%;
+}
+.section-image-1 p,
+.section-image-2 p,
+.section-image-3 p {
+  font-size: 0.8rem;
+  margin: 0.15rem 0;
+}
+.rating-1,
+.rating-2 {
+  filter: invert(89%) sepia(70%) saturate(7494%)
+    hue-rotate(327deg) brightness(105%) contrast(101%);
+  width: 0.7rem;
+  height: 0.7rem;
+}
+.rating-1-not {
+  width: 0.7rem;
+  height: 0.7rem;
+  filter: invert(100%) sepia(0%) saturate(7500%)
+    hue-rotate(315deg) brightness(103%) contrast(102%);
+}
+
+.book-1-image {
+  background: url("/Images/fellowship_ring.jpg") no-repeat;
+  background-size: contain;
+  margin-top: 0.5rem;
+  background-position: center;
+}
+.book-2-image {
+  background: url("/Images/twoTowers.jpg") no-repeat;
+  background-size: contain;
+  margin-top: 0.5rem;
+  background-position: center;
+}
+.book-3-image {
+  background: url("/Images/thereturnofKING.jpg") no-repeat;
+  background-size: contain;
+  background-position: center;
+  margin-top: 0.5rem;
+}
+.book-1-rating-score {
+  margin-top: 0.5rem;
+}
+.book-1-review-link,
+.book-2-review-link,
+.book-3-review-link {
+  /* text-decoration: none; */
+  color: #000;
+  font-size: 0.7rem;
+  align-self: flex-end;
+}
+.extras h3 {
+  letter-spacing: 1px;
+  margin-bottom: 0.5rem;
+  font-size: 1.15rem;
+}
+.email-section {
+  outline: none;
+  border: none;
+  font-size: 0.7rem;
+  letter-spacing: 1px;
+  padding: 0.5rem 0.5rem;
+  width: 100%;
+  border-radius: 3px;
+}
+
+.extras-news {
+  font-size: 0.8rem;
+  margin-bottom: 0.5rem;
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0.7rem;
+  /* align-items: end; */
+  /* max-width: 500px; */
+}
+.submit-button {
+  width: 7rem;
+  padding: 0.4rem 0;
+  align-self: flex-end;
+  margin-top: 0.8rem;
+  background-color: #b54821;
+  color: rgb(228, 220, 220);
+  border: none;
+  border-radius: 3px;
+  letter-spacing: 1px;
+}
+.submit-button:hover {
+  cursor: pointer;
+  background-color: #853316;
+}
+footer {
+  padding: 1rem 0 0 0;
+  text-align: center;
+  word-spacing: 5px;
+  color: rgb(8 8 8);
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.footer-text {
+  font-size: 0.9rem;
+  font-weight: bold;
+  /* max-width: 500px; */
+  /* letter-spacing: 1px; */
+}
+.form-tooltip {
+  content: "";
+  font-size: 0.5rem;
+  letter-spacing: 1px;
+  position: relative;
+}
+.form-feedback {
+  padding: 1rem;
+  background-color: aliceblue;
+  max-width: 15rem;
+  position: relative;
+  text-align: center;
+  opacity: 0;
+}
+.form-response {
+  animation-name: animatebottom;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes animatebottom {
+  from {
+    bottom: -1000px;
+    opacity: 0;
+  }
+  to {
+    bottom: 0;
+    opacity: 1;
+  }
+}
+
+@media screen and (min-width: 402px) {
+  .email-section {
+    max-width: 400px;
+    /* margin-right: 2rem; */
+  }
+  .extras-news {
+    max-width: 22rem;
+  }
+  .button-wrapper {
+    max-width: 400px;
+  }
+}
+
+@media screen and (min-width: 767px) {
+  .book-header-title {
+    font-size: 2rem;
+  }
+}

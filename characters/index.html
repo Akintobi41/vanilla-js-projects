@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>The RIngs*</title>
+    <link
+      rel="preconnect"
+      href="https://fonts.googleapis.com"
+    />
+    <link
+      rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="preconnect"
+      href="https://fonts.googleapis.com"
+    />
+    <link
+      rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="preconnect"
+      href="https://fonts.googleapis.com"
+    />
+    <link
+      rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Courgette&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="/css/styles.css" />
+    <link rel="stylesheet" href="/characters/styles.css" />
+  </head>
+  <body>
+    <main class="main-content">
+      <div class="main-content-inside">
+        <header>
+          <section class="logo">
+            <h1 class="h1-title">
+              <a href="/index.html" class="h1-title"
+                >LoTRings</a
+              >
+            </h1>
+            <small
+              ><a href="/index.html" class="small"
+                >Forged for the fans of the rings</a
+              ></small
+            >
+          </section>
+          <section class="hamburger"></section>
+          <nav class="navigation">
+            <ul>
+              <li>
+                <a href="/books/index.html" target="_blank"
+                  >Books</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/characters/index.html"
+                  target="_blank"
+                  class="book-link"
+                  >Characters</a
+                >
+              </li>
+              <li><a href="">Movies</a></li>
+            </ul>
+          </nav>
+        </header>
+        <section class="find-character">
+          <h1 class="h1-titles">
+            LoTRings<sub>directory</sub>
+          </h1>
+          <h3>
+            Find your favorite character to take you to the
+            rings
+          </h3>
+          <input
+            type="search"
+            placeholder='...search "character"'
+            class="content-search"
+          />
+        </section>
+        <section class="character-section"></section>
+        <section class="pagination">
+          <button class="min-content"></button
+          ><span>Of</span
+          ><button class="max-content"></button
+          ><button class="previous"><</button
+          ><button class="next">></button>
+        </section>
+      </div>
+    </main>
+    <div class="menu-overlay"></div>
+
+    <script
+      type="module"
+      src="/characters/characters.js"
+    ></script>
+  </body>
+</html>
