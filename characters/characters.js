@@ -6,7 +6,7 @@ let hamToggle = document.querySelector(".hamburger"),
     characterSection = document.querySelector('.character-section');
 
 
-// Hamburger Menu
+// Hamburger Menu of the page
 document.onclick = function (e) {
     if (e.target !== hamToggle && e.target !== navigation) {
         hamToggle.classList.remove("active");
