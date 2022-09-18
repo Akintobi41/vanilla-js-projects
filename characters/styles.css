@@ -1,6 +1,12 @@
 .book-link {
   opacity: 0.4;
 }
+
+.main-content {
+  height: auto;
+  min-height: 100vh;
+}
+
 .find-character {
   padding: 1rem;
   display: flex;
@@ -68,7 +74,58 @@
 .pagination .max-content {
   margin-right: 1rem;
 }
-/* .pagination
-.pagination .next {
-  border: solid 1px #2c2828;
-} */
+.character-section {
+  padding: 1rem;
+}
+.character-section-items {
+  /* width: ; */
+  padding: 1rem 0.5rem;
+  margin-bottom: 0.5rem;
+  background-color: rgb(255 255 255 / 19%);
+  box-shadow: 0 0 4px #8d7979;
+}
+.character-section-items:hover {
+  background-color: rgb(255 255 255 / 32%);
+}
+.character-section-header {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  border-bottom: none;
+  margin-bottom: 1rem;
+}
+.gender-image {
+  width: 2rem;
+  height: 2rem;
+  filter: invert(84%) sepia(27%) saturate(2812%)
+    hue-rotate(359deg) brightness(104%) contrast(101%);
+  background-color: invert(84%) sepia(27%) saturate(2812%)
+    hue-rotate(359deg) brightness(104%) contrast(101%);
+  margin-right: 1rem;
+}
+.female {
+  filter: invert(44%) sepia(67%) saturate(1082%)
+    hue-rotate(347deg) brightness(94%) contrast(91%);
+}
+.character-name {
+  font-size: 1rem;
+}
+.character-name a {
+  text-decoration: none;
+  padding-bottom: 0.2rem;
+  color: #000;
+  letter-spacing: 1px;
+}
+.character-name a:hover {
+  /* text-decoration: underline; */
+  /* padding-bottom: 1.5rem; */
+  color: #0a0a0a;
+  border-bottom: solid 1px #5c5454;
+  transition: color 1s;
+}
+.birth-text,
+.gender-text {
+  margin-left: 0.7rem;
+  font-size: 0.8rem;
+  color: #000;
+}

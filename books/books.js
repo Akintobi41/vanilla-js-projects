@@ -120,14 +120,14 @@ function validation(e) {
         setTimeout(() => {
             formFeedback.classList.toggle('form-response')
 
-        }, 1000);
+        });
 
         setTimeout(() => {
             formFeedback.classList.toggle('form-response')
             document.querySelector('.email-section').value = '';
             submitBtn.style.cursor = "pointer"
             submitBtn.removeAttribute('disabled')
-        }, 2000);
+        }, 1000);
 
     } else {
         formTooltip.textContent = "Please Enter A Valid Email Address* "

@@ -192,6 +192,7 @@ header {
   }
 
   .navigation {
+    width: auto;
     transform: translateY(0);
     height: auto;
     display: flex;
