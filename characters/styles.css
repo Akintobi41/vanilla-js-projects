@@ -53,10 +53,11 @@
   justify-content: center;
 }
 .pagination button {
-  width: 1.5rem;
-  font-size: 1.2rem;
+  width: 2rem;
+  height: 2rem;
+  font-size: 0.8rem;
   color: rgb(84 79 79);
-  font-weight: 400;
+  font-weight: 700;
   margin-left: 0.8rem;
   opacity: 0.9;
   background: rgb(255 255 255 / 90%);

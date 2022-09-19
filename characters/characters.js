@@ -31,6 +31,7 @@ let character_docs = retrievedCharacters.docs,
 
 
 console.log(character_docs)
+
 character_docs.forEach(character => {
 
     let newSection = document.createElement('section');
@@ -47,7 +48,6 @@ character_docs.forEach(character => {
     let h2 = document.createElement('h2');
     h2.classList.add('character-name');
     h2.innerHTML = `<a href="${character.wikiUrl}"> ${character.name}</a>`
-    // h2.textContent = character.name
 
 
     if ((character.gender) === 'Male') {
@@ -72,7 +72,7 @@ character_docs.forEach(character => {
     p_birth.classList.add('birth-text');
     p_birth.textContent = ` Birth: ${character.birth}`
 
-    if (character.birth.length < 1) {
+    if (!character.birth.length) {
         p_birth.textContent = ` Birth: Data unavailable`
 
     }
@@ -92,18 +92,6 @@ character_docs.forEach(character => {
 
 
 });
-
-
-// let b = [];
-
-// let newCharacter = character_docs.map((character) => {
-
-//     let p = document.createElement('p')
-//     let img = document.createElement('img')
-
-//     return p && img
-// })
-
 
 // Pagination
 
@@ -137,6 +125,9 @@ function changePage(records_per_page, current_page, content, wrapper) {
     if ((current_page + 1) != 1) {
         btn_prev.style.border = "solid 1px red"
     }
+    document.querySelector('.min-content').textContent = end;
+    document.querySelector('.max-content').textContent = content.length;
+
 }
 
 function numPages(content, records_per_page) {
