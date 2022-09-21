@@ -32,74 +32,140 @@ let character_docs = retrievedCharacters.docs,
 
 console.log(character_docs)
 
+let newSection;
+
+
+// let newCharacters = character_docs.map((character) => document.createElement('section'))
+
+// newCharacters.forEach((character) => {
+
+//     character.classList.add('character-section-items')
+//     character.id = ids++;
+
+// })
+
+// sectionData.push(...newCharacters)
+
+// let newHeader = character_docs.map((character) => document.createElement('header'))
+
+// newHeader.forEach((header) => {
+//     header.classList.add('character-section-header')
+
+// })
+
+// newCharacters.push(...newHeader)
+// console.log(newCharacters)
+
+// character_docs.forEach((elements))
+// character_docs.forEach((elements1))
+
+
+// function elements(a, b, c, d, w) {
+//     // console.log(e)""
+
+//     a = document.createElement('section');
+
+// }
+
+// function elements1() {
+//     // 
+// }
+
+let header;
+let img;
+let h2;
+let p_gender;
+let p_birth;
+let p_race;
+let p_spouse;
+let btnSection;
+let header_section;
+let starImg;
+
+// Function for adding classes 
+function addclassList(element, className) {
+    element.classList.add(`${className}`)
+}
+
+function toggleBtn(element, listener) {
+    element.setAttribute("title", "Add to favorites")
+    element.addEventListener(listener, function () {
+        element.classList.toggle('active');
+        element.setAttribute('title', "Added to Favorites")
+    })
+    if (!element.classList.value.includes('active')) element.removeAttribute('title')
+}
+
 character_docs.forEach(character => {
+    // Creating new elements 
+    newSection = document.createElement('section'), newSection.id = ids++,
+        header = document.createElement('header'),
+        img = document.createElement('img'),
+        h2 = document.createElement('h2'),
+        p_gender = document.createElement('p'),
+        p_birth = document.createElement('p'),
+        p_race = document.createElement('p'),
+        p_death = document.createElement('p'),
+        p_spouse = document.createElement('p'),
+        btnSection = document.createElement('button'),
+        header_section = document.createElement('div'),
+        btnSection = document.createElement('button'),
+        starImg = document.createElement('img')
 
-    let newSection = document.createElement('section');
-    newSection.classList.add('character-section-items');
-    newSection.id = ids++;
+    h2.innerHTML = `<a href="${character.wikiUrl}" 
+                       title="click to learn more about ${character.name}"> 
+                       ${character.name}</a>`;
 
-    let header = document.createElement('header')
-    header.classList.add('character-section-header')
+    starImg.src = '/Images/star-sharp.svg';
+    toggleBtn(btnSection, "click");
 
-    let img = document.createElement('img');
-    img.classList.add('gender-image');
-
-
-    let h2 = document.createElement('h2');
-    h2.classList.add('character-name');
-    h2.innerHTML = `<a href="${character.wikiUrl}"> ${character.name}</a>`
-
-
-    if ((character.gender) === 'Male') {
-        img.src = imageSource[0]
-    }
-    if ((character.gender) === 'Female') {
+    // Checking for assigned gender                   
+    if ((character.gender) === 'Male') img.src = imageSource[0]
+    else if ((character.gender) === 'Female') {
         img.src = imageSource[1]
-        img.classList.add('female')
+        addclassList(img, "female")
     }
 
-    header.appendChild(img)
-    header.appendChild(h2)
-
-    newSection.appendChild(header)
-
-    let p_gender = document.createElement('p');
-    p_gender.classList.add('gender-text');
+    // Checking for Birth Information
+    if (!character.birth.length) p_birth.textContent = ` Birth: Data unavailable`
+    else p_birth.textContent = ` Birth: ${character.birth}`
 
     p_gender.textContent = `Gender: ${character.gender}`;
+    p_race.textContent = `Race: ${character.race}`;
+    p_death.textContent = `Death: ${character.death}`;
+    p_spouse.textContent = `Spouse : ${character.spouse}`;
+    // Appending elements to the DOM
+    header_section.appendChild(img), header_section.appendChild(h2);
+    btnSection.appendChild(starImg), header.appendChild(btnSection),
+        header.appendChild(header_section)
+    newSection.appendChild(header), newSection.appendChild(p_gender)
+    newSection.appendChild(p_birth), newSection.appendChild(p_race)
+    newSection.appendChild(p_death)
+    newSection.appendChild(p_spouse)
 
-    let p_birth = document.createElement('p');
-    p_birth.classList.add('birth-text');
-    p_birth.textContent = ` Birth: ${character.birth}`
+    if (!character.death.length) p_death.textContent = `Death: Data unavailable`;
+    if (!character.spouse.length) p_spouse.textContent = `Spouse: Data unavailable`;
 
-    if (!character.birth.length) {
-        p_birth.textContent = ` Birth: Data unavailable`
-
-    }
-
-    newSection.appendChild(p_gender)
-    newSection.appendChild(p_birth)
-
-    let p_race = document.createElement('p');
-    p_race.classList.add('race-text')
-
-    p_death = document.createElement('p')
-    p_death.classList.add('death-text');
-
-
+    // Adding class names to elements
+    addclassList(newSection, "character-section-items")
+    addclassList(header, "character-section-header")
+    addclassList(img, "gender-image")
+    addclassList(h2, "character-name")
+    addclassList(p_gender, "gender-text")
+    addclassList(p_birth, "birth-text")
+    addclassList(p_race, "race-text")
+    addclassList(p_death, "death-text")
+    addclassList(p_spouse, 'spouse-text')
+    addclassList(header_section, 'header-section')
+    addclassList(starImg, 'star-img')
+    addclassList(btnSection, 'btn-section')
     sectionData.push(newSection);
-
-
-
 });
 
 // Pagination
-
 let exactPage = 1;
 
 function changePage(records_per_page, current_page, content, wrapper) {
-    // if (current_page < 1) current_page = 1;
-    // if (current_page > numPages(sectionData, 15)) current_page = numPages(sectionData, 15);
 
     btn_next.addEventListener('click', next)
     btn_prev.addEventListener('click', previous)
@@ -137,6 +203,7 @@ function numPages(content, records_per_page) {
 changePage(10, exactPage, sectionData, characterSection)
 
 function next() {
+    characterSection.innerHTML = '';
     if (exactPage < numPages(sectionData, 10)) {
         exactPage++;
         changePage(10, exactPage, sectionData, characterSection)
