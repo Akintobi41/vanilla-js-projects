@@ -1,10 +1,14 @@
-let hamToggle = document.querySelector(".hamburger"),
-    navigation = document.querySelector(".navigation"),
-    book_titles = document.querySelector('.book-titles'),
-    btn_prev = document.querySelector('.previous'),
-    btn_next = document.querySelector('.next'),
-    characterSection = document.querySelector('.character-section');
+import * as _ from "../utils.js"
 
+let hamToggle = _.getEl(".hamburger"),
+    navigation = _.getEl(".navigation"),
+    book_titles = _.getEl('.book-titles'),
+    btn_prev = _.getEl('.previous'),
+    btn_next = _.getEl('.next'),
+    characterSection = _.getEl('.character-section'),
+    minContent = _.getEl('.min-content'),
+    maxContent = _.getEl('.max-content'),
+    genderSelect = _.getEl('#gender-select')
 
 // Hamburger Menu 
 document.onclick = function (e) {
@@ -20,180 +24,115 @@ hamToggle.onclick = function () {
 
 };
 //
-
 import { retrievedCharacters } from "../index.js";
 
-let p_death;
+
 let character_docs = retrievedCharacters.docs,
     sectionData = [],
-    ids = 1,
     imageSource = ['/Images/man.svg', '/Images/woman.svg'];
 
 
-console.log(character_docs)
-
-let newSection;
-
-
-// let newCharacters = character_docs.map((character) => document.createElement('section'))
-
-// newCharacters.forEach((character) => {
-
-//     character.classList.add('character-section-items')
-//     character.id = ids++;
-
-// })
-
-// sectionData.push(...newCharacters)
-
-// let newHeader = character_docs.map((character) => document.createElement('header'))
-
-// newHeader.forEach((header) => {
-//     header.classList.add('character-section-header')
-
-// })
-
-// newCharacters.push(...newHeader)
-// console.log(newCharacters)
-
-// character_docs.forEach((elements))
-// character_docs.forEach((elements1))
-
-
-// function elements(a, b, c, d, w) {
-//     // console.log(e)""
-
-//     a = document.createElement('section');
-
-// }
-
-// function elements1() {
-//     // 
-// }
-
-let header;
-let img;
-let h2;
-let p_gender;
-let p_birth;
-let p_race;
-let p_spouse;
-let btnSection;
-let header_section;
-let starImg;
-
 // Function for adding classes 
-function addclassList(element, className) {
-    element.classList.add(`${className}`)
-}
+// function addclassList(element, className) {
+//     element.classList.add(className)
+// }
 
-function toggleBtn(element, listener) {
-    element.setAttribute("title", "Add to favorites")
-    element.addEventListener(listener, function () {
-        element.classList.toggle('active');
-        element.setAttribute('title', "Added to Favorites")
-    })
-    if (!element.classList.value.includes('active')) element.removeAttribute('title')
-}
 
-character_docs.forEach(character => {
-    // Creating new elements 
-    newSection = document.createElement('section'), newSection.id = ids++,
-        header = document.createElement('header'),
-        img = document.createElement('img'),
-        h2 = document.createElement('h2'),
-        p_gender = document.createElement('p'),
-        p_birth = document.createElement('p'),
-        p_race = document.createElement('p'),
-        p_death = document.createElement('p'),
-        p_spouse = document.createElement('p'),
-        btnSection = document.createElement('button'),
-        header_section = document.createElement('div'),
-        btnSection = document.createElement('button'),
-        starImg = document.createElement('img')
+// character_docs.forEach(runUI)
+character_docs.forEach((val, i) => _.characterCard(val, i, sectionData))
 
-    h2.innerHTML = `<a href="${character.wikiUrl}" 
-                       title="click to learn more about ${character.name}"> 
-                       ${character.name}</a>`;
+// function runUI(character, i) {
 
-    starImg.src = '/Images/star-sharp.svg';
-    toggleBtn(btnSection, "click");
+//     // Creating new elements 
+//     const newSection = _.el('section'), header = _.el('header'),
+//         img = _.el('img'), h2 = _.el('h2'), p_gender = _.el('p'),
+//         p_birth = _.el('p'), p_race = _.el('p'), p_death = _.el('p'),
+//         p_spouse = _.el('p'), header_section = _.el('div'),
+//         btnSection = _.el('button'), starImg = _.el('img'), p_more = _.el('p');
 
-    // Checking for assigned gender                   
-    if ((character.gender) === 'Male') img.src = imageSource[0]
-    else if ((character.gender) === 'Female') {
-        img.src = imageSource[1]
-        addclassList(img, "female")
-    }
+//     newSection.id = i
+//     h2.innerHTML = `<a href="${character.wikiUrl}" 
+//                        title="click to learn more about ${character.name}"> 
+//                        ${character.name}</a>`;
 
-    // Checking for Birth Information
-    if (!character.birth.length) p_birth.textContent = ` Birth: Data unavailable`
-    else p_birth.textContent = ` Birth: ${character.birth}`
+//     starImg.src = '/Images/star-sharp.svg';
+//     _.addToFav(btnSection, "click");
+//     // Checking for assigned gender                   
+//     if ((character.gender) === 'Male') img.src = imageSource[0]
+//     else if ((character.gender) === 'Female') {
+//         img.src = imageSource[1]
+//         addclassList(img, "female")
+//     }
+//     // Adding attributes for images
+//     img.setAttribute('alt', "gender-type")
+//     starImg.setAttribute('alt', 'add to favorites')
 
-    p_gender.textContent = `Gender: ${character.gender}`;
-    p_race.textContent = `Race: ${character.race}`;
-    p_death.textContent = `Death: ${character.death}`;
-    p_spouse.textContent = `Spouse : ${character.spouse}`;
-    // Appending elements to the DOM
-    header_section.appendChild(img), header_section.appendChild(h2);
-    btnSection.appendChild(starImg), header.appendChild(btnSection),
-        header.appendChild(header_section)
-    newSection.appendChild(header), newSection.appendChild(p_gender)
-    newSection.appendChild(p_birth), newSection.appendChild(p_race)
-    newSection.appendChild(p_death)
-    newSection.appendChild(p_spouse)
+//     console.log(character)
+//     // Checking for Birth Information
+//     if (!character.birth.length) p_birth.textContent = ` Birth: Data unavailable`
+//     else p_birth.textContent = ` Birth: ${character.birth}`
 
-    if (!character.death.length) p_death.textContent = `Death: Data unavailable`;
-    if (!character.spouse.length) p_spouse.textContent = `Spouse: Data unavailable`;
+//     p_gender.textContent = `Gender: ${character.gender}`;
+//     p_race.textContent = `Race: ${character.race}`;
+//     p_death.textContent = `Death: ${character.death}`;
+//     p_spouse.textContent = `Spouse : ${character.spouse}`;
+//     p_more.textContent = 'View more...'
 
-    // Adding class names to elements
-    addclassList(newSection, "character-section-items")
-    addclassList(header, "character-section-header")
-    addclassList(img, "gender-image")
-    addclassList(h2, "character-name")
-    addclassList(p_gender, "gender-text")
-    addclassList(p_birth, "birth-text")
-    addclassList(p_race, "race-text")
-    addclassList(p_death, "death-text")
-    addclassList(p_spouse, 'spouse-text')
-    addclassList(header_section, 'header-section')
-    addclassList(starImg, 'star-img')
-    addclassList(btnSection, 'btn-section')
-    sectionData.push(newSection);
-});
+//     // Appending elements to the DOM
+//     _.append(header_section, img); _.append(header_section, h2)
+//     _.append(btnSection, starImg), _.append(header, btnSection),
+//         _.append(header, header_section)
+//     _.append(newSection, header), _.append(newSection, p_gender)
+//     _.append(newSection, p_birth), _.append(newSection, p_race)
+//     _.append(newSection, p_death), _.append(newSection, p_spouse)
+//     _.append(newSection, p_more)
+
+//     if (!character.death.length) p_death.textContent = `Death: Data unavailable`;
+//     if (!character.spouse.length) p_spouse.textContent = `Spouse: Data unavailable`;
+
+//     // Adding class names to elements
+//     addclassList(newSection, "character-section-items")
+//     addclassList(header, "character-section-header")
+//     addclassList(img, "gender-image")
+//     addclassList(h2, "character-name")
+//     addclassList(p_gender, "gender-text")
+//     addclassList(p_birth, "birth-text")
+//     addclassList(p_race, "race-text")
+//     addclassList(p_death, "death-text")
+//     addclassList(p_spouse, 'spouse-text')
+//     addclassList(header_section, 'header-section')
+//     addclassList(starImg, 'star-img')
+//     addclassList(btnSection, 'btn-section')
+//     addclassList(p_more, "view-more-text")
+//     sectionData = [...sectionData, newSection]    //Appending elements to sectionData
+// }
+
 
 // Pagination
 let exactPage = 1;
 
-function changePage(records_per_page, current_page, content, wrapper) {
+btn_next.addEventListener('click', next)
+btn_prev.addEventListener('click', previous)
 
-    btn_next.addEventListener('click', next)
-    btn_prev.addEventListener('click', previous)
+function changePage(records_per_page, current_page, content, wrapper) {
 
     wrapper.innerHTML = '';
     current_page--;
 
     let start = current_page * records_per_page,
-
         end = start + records_per_page,
-
         paginatedItems = content.slice(start, end);
 
     paginatedItems.forEach((items) => wrapper.append(items));   // Appending items to DOM
 
-    if ((current_page + 1) >= 1) {
-        btn_next.style.border = "solid 1px #2c2828"
-    }
-    else {
-        btn_next.style.border = "initial"
-    }
+    ((current_page + 1) != 1) ? btn_prev.classList.remove("previous-button") :
+        _.addClass(btn_prev, "previous-button")
 
-    if ((current_page + 1) != 1) {
-        btn_prev.style.border = "solid 1px red"
-    }
-    document.querySelector('.min-content').textContent = end;
-    document.querySelector('.max-content').textContent = content.length;
 
+    minContent.textContent = end;
+    maxContent.textContent = content.length;
+    (end > content.length) ? minContent.textContent = content.length : false
+    // if (end > content.length) minContent.textContent = content.length;
 }
 
 function numPages(content, records_per_page) {
@@ -203,11 +142,12 @@ function numPages(content, records_per_page) {
 changePage(10, exactPage, sectionData, characterSection)
 
 function next() {
-    characterSection.innerHTML = '';
-    if (exactPage < numPages(sectionData, 10)) {
-        exactPage++;
-        changePage(10, exactPage, sectionData, characterSection)
-    }
+    // if (exactPage < numPages(sectionData, 10)) {
+    // exactPage++;
+    // changePage(10, exactPage, sectionData, characterSection)
+    // }
+
+    (exactPage < numPages(sectionData, 10)) ? (exactPage++, changePage(10, exactPage, sectionData, characterSection)) : false
 }
 
 function previous() {
@@ -217,3 +157,20 @@ function previous() {
     }
 }
 
+// Filter by Gender
+genderSelect.addEventListener('change', genderUI)
+let genderArr_male;
+
+function genderUI(e) {
+    if (e.target.value.toLowerCase() === 'male') {
+        btn_next.removeEventListener('click', next)
+        btn_prev.removeEventListener('click', previous)
+
+        genderArr_male = sectionData.filter((item) => {
+            return item.children[1].textContent.slice(8) === 'Male'
+        })
+        changePage(10, exactPage, genderArr_male, characterSection)
+
+    }
+
+}

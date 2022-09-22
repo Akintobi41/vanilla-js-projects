@@ -117,14 +117,14 @@
     hue-rotate(359deg) brightness(104%) contrast(101%);
   background-color: invert(84%) sepia(27%) saturate(2812%)
     hue-rotate(359deg) brightness(104%) contrast(101%);
-  margin-right: 0.2rem;
+  margin-right: 0.3rem;
 }
 .female {
   filter: invert(44%) sepia(67%) saturate(1082%)
     hue-rotate(347deg) brightness(94%) contrast(91%);
 }
 .character-name {
-  font-size: 1rem;
+  font-size: 1.2em;
 }
 .character-name a {
   text-decoration: none;
@@ -150,12 +150,26 @@
   max-width: 12rem;
   letter-spacing: 1px;
 }
-
+.view-more-text {
+  display: none;
+  font-size: 0.8rem;
+  color: #000;
+  align-self: flex-end;
+  text-decoration: none;
+  margin-right: 0.5rem;
+  cursor: pointer;
+  transform: translate(0px, -55px);
+}
+.pagination .min-content,
+.pagination .max-content {
+  background-color: rgb(255 255 255 / 61%);
+}
 .next {
   font-size: 2rem;
 }
 .header-section {
   display: flex;
+  align-items: center;
 }
 .btn-section {
   width: 1.7rem;
@@ -170,19 +184,48 @@
 .star-img {
   width: 1.3rem;
   height: 1.3rem;
-  filter: invert(55%) sepia(147%) saturate(252%)
+  filter: invert(118%) sepia(147%) saturate(252%)
     hue-rotate(314deg) brightness(96%) contrast(86%);
-  /* filter: invert(100%) sepia(0%) saturate(0%)
-    hue-rotate(23deg) brightness(103%) contrast(102%); */
-  /* background-color: grey; */
 }
+
 .btn-section.active .star-img {
   filter: invert(0%) sepia(77%) saturate(7457%)
     hue-rotate(208deg) brightness(116%) contrast(100%);
-  /* filter: invert(79%) sepia(83%) saturate(2014%)
-    hue-rotate(358deg) brightness(100%) contrast(104%); */
+}
+.pagination .previous {
+  background-color: rgb(255 255 255 / 90%);
+  cursor: pointer;
+}
+.pagination .previous-button {
+  background: rgb(255 255 255 / 61%);
+  cursor: not-allowed;
+}
+.filter-section {
+  display: flex;
+  padding: 0 1rem;
+}
+.filter-section p {
+  letter-spacing: 1px;
+  font-weight: 500;
+}
+#gender-select {
+  background-color: transparent;
+  border: none;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+}
+#gender-select:focus,
+#gender-select:active {
+  /* border: none; */
+  outline: none;
+  /* text-align: center; */
 }
 
+@media screen and (min-width: 500px) {
+  .view-more-text {
+    display: block;
+  }
+}
 @media screen and (min-width: 768px) {
   .h1-titles {
     font-size: 4.5rem;
