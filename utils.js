@@ -12,7 +12,8 @@ export const append = (el, child) => el.appendChild(child)
 
 export const getEl = (e) => document.querySelector(e)
 
-export const characterCard = (character, i, arr) => {
+export const characterCard = (hero, i, arr) => {
+
     const newSection = el('section'), header = el('header'),
         img = el('img'), h2 = el('h2'), p_gender = el('p'),
         p_birth = el('p'), p_race = el('p'), p_death = el('p'),
@@ -21,27 +22,26 @@ export const characterCard = (character, i, arr) => {
 
     //card character name
     newSection.id = i
-    h2.innerHTML = `<a href="${character.wikiUrl}" 
-        title="click to learn more about ${character.name}"> 
-        ${character.name}</a>`;
+    h2.innerHTML = `<a href="${hero.wikiUrl}" 
+        title="click to learn more about ${hero.name}"> 
+        ${hero.name}</a>`;
 
     //favorites button
     starImg.src = '/Images/star-sharp.svg';
     addToFav(btnSection, "click");
 
-    img.src = gender[character.gender ? character.gender === "Female" ? 'female' : 'male' : 'unknown']
-
-    if (character.gender === "Female") addClass(img, "female")
+    img.src = gender[hero.gender ? hero.gender === "Female" ? 'female' : 'male' : 'unknown']
+    if (hero.gender === "Female") addClass(img, "female")
 
     // Adding attributes for  the images
     img.setAttribute('alt', "gender-type")
     starImg.setAttribute('alt', 'add to favorites')
 
-    p_birth.textContent = `Birth: ${character.birth || 'Data unavailable'}`
-    p_gender.textContent = `Gender: ${character.gender}`;
-    p_race.textContent = `Race: ${character.race}`;
-    p_death.textContent = `Death: ${character.death || 'Data unavailable'}`
-    p_spouse.textContent = `Spouse: ${character.spouse || 'Data unavailable'}`
+    p_birth.textContent = `Birth: ${hero.birth || 'Data unavailable'}`
+    p_gender.textContent = `Gender: ${hero.gender || 'Data unavailable'}`;
+    p_race.textContent = `Race: ${hero.race || 'Data unavailable'}`;
+    p_death.textContent = `Death: ${hero.death || 'Data unavailable'}`
+    p_spouse.textContent = `Spouse: ${hero.spouse || 'Data unavailable'}`
     p_more.textContent = 'View more...'
 
     append(header_section, img)

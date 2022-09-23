@@ -1,5 +1,5 @@
 import * as _ from "../utils.js"
-
+console.log(_)
 let hamToggle = _.getEl(".hamburger"),
     navigation = _.getEl(".navigation"),
     book_titles = _.getEl('.book-titles'),
@@ -24,21 +24,14 @@ hamToggle.onclick = function () {
 
 };
 //
-import { retrievedCharacters } from "../index.js";
 
+import { retrievedCharacters } from "../index.js";
 
 let character_docs = retrievedCharacters.docs,
     sectionData = [],
     imageSource = ['/Images/man.svg', '/Images/woman.svg'];
 
 
-// Function for adding classes 
-// function addclassList(element, className) {
-//     element.classList.add(className)
-// }
-
-
-// character_docs.forEach(runUI)
 character_docs.forEach((val, i) => _.characterCard(val, i, sectionData))
 
 // function runUI(character, i) {
@@ -115,7 +108,6 @@ btn_next.addEventListener('click', next)
 btn_prev.addEventListener('click', previous)
 
 function changePage(records_per_page, current_page, content, wrapper) {
-
     wrapper.innerHTML = '';
     current_page--;
 
@@ -128,11 +120,9 @@ function changePage(records_per_page, current_page, content, wrapper) {
     ((current_page + 1) != 1) ? btn_prev.classList.remove("previous-button") :
         _.addClass(btn_prev, "previous-button")
 
-
     minContent.textContent = end;
     maxContent.textContent = content.length;
     (end > content.length) ? minContent.textContent = content.length : false
-    // if (end > content.length) minContent.textContent = content.length;
 }
 
 function numPages(content, records_per_page) {
@@ -142,35 +132,42 @@ function numPages(content, records_per_page) {
 changePage(10, exactPage, sectionData, characterSection)
 
 function next() {
-    // if (exactPage < numPages(sectionData, 10)) {
-    // exactPage++;
-    // changePage(10, exactPage, sectionData, characterSection)
-    // }
-
-    (exactPage < numPages(sectionData, 10)) ? (exactPage++, changePage(10, exactPage, sectionData, characterSection)) : false
+    (exactPage < numPages(sectionData, 10)) ?
+        (exactPage++, changePage(10, exactPage, sectionData, characterSection)) : false
 }
 
 function previous() {
-    if (exactPage > 1) {
-        exactPage--;
-        changePage(10, exactPage, sectionData, characterSection)
-    }
+    (exactPage > 1) ? (exactPage--,
+        changePage(10, exactPage, sectionData, characterSection)) : false
 }
 
 // Filter by Gender
 genderSelect.addEventListener('change', genderUI)
 let genderArr_male;
+let exactPage1 = 1;
+
+// btn_next.removeEventListener('click', next)
+// btn_prev.removeEventListener('click', previous)
+
+btn_next.addEventListener('click', next1)
+btn_prev.addEventListener('click', previous1)
 
 function genderUI(e) {
     if (e.target.value.toLowerCase() === 'male') {
-        btn_next.removeEventListener('click', next)
-        btn_prev.removeEventListener('click', previous)
 
         genderArr_male = sectionData.filter((item) => {
             return item.children[1].textContent.slice(8) === 'Male'
         })
-        changePage(10, exactPage, genderArr_male, characterSection)
+        changePage(10, exactPage1, genderArr_male, characterSection)
 
     }
+}
+function next1() {
+    (exactPage1 < numPages(genderArr_male, 10)) ?
+        (exactPage1++, changePage(10, exactPage1, genderArr_male, characterSection)) : false
+}
 
+function previous1() {
+    (exactPage1 > 1) ? (exactPage1--,
+        changePage(10, exactPage1, genderArr_male, characterSection)) : false
 }
