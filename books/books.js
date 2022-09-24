@@ -154,3 +154,22 @@ function validation(e) {
 }
 
 submitBtn.addEventListener('click', validation)
+
+
+import { savedQuotes } from "../index.js";
+
+let quotesText = document.querySelector('.quotes-text')
+setInterval(() => {
+    let num = Math.floor(Math.random() * 1000);
+    quotesText.textContent = savedQuotes.docs[num].dialog;
+    quotesText.classList.toggle('quotes-animate')
+    checkText();
+}, 2000);
+
+// Truncating quotes text
+function checkText() {
+    return (quotesText.textContent.length > 100) ?
+        (quotesText.textContent = quotesText.textContent.substring(0, 100) + "...")
+        : quotesText.textContent
+}
+

@@ -21,7 +21,6 @@ header {
 .book-3 {
   width: 95%;
   height: 20rem;
-  /* margin-left: 1.5rem; */
   margin-top: 1rem;
   background-color: red;
 }
@@ -163,8 +162,6 @@ figure {
   display: flex;
   flex-direction: column;
   margin-bottom: 0.7rem;
-  /* align-items: end; */
-  /* max-width: 500px; */
 }
 .submit-button {
   width: 7rem;
@@ -193,8 +190,6 @@ footer {
 .footer-text {
   font-size: 0.9rem;
   font-weight: bold;
-  /* max-width: 500px; */
-  /* letter-spacing: 1px; */
 }
 .form-tooltip {
   content: "";
@@ -215,6 +210,36 @@ footer {
   animation-duration: 1s;
   animation-fill-mode: forwards;
 }
+.quotes {
+  padding: 1rem;
+  padding-bottom: 3rem;
+  min-height: 10rem;
+}
+.quotes h3 {
+  padding-bottom: 0.5rem;
+  border-bottom: solid 1px rgb(128 128 128 / 60%);
+}
+.quotes-text {
+  font-size: 0.85rem;
+  padding: 0.5rem 2rem;
+  letter-spacing: 1.5px;
+  max-width: 400px;
+}
+.quotes-animate {
+  animation: focus-in-expand 0.8s
+    cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+@keyframes focus-in-expand {
+  0% {
+    letter-spacing: -0.5em;
+    filter: blur(12px);
+    opacity: 0;
+  }
+  100% {
+    filter: blur(0px);
+    opacity: 1;
+  }
+}
 
 @keyframes animatebottom {
   from {
@@ -230,7 +255,6 @@ footer {
 @media screen and (min-width: 402px) {
   .email-section {
     max-width: 400px;
-    /* margin-right: 2rem; */
   }
   .extras-news {
     max-width: 22rem;

@@ -43,13 +43,12 @@ const apiCall = async (url) => {
 const getAll_data = async () => {
 
     const mainData = await Promise.all([apiCall('/book'), apiCall('/character'),
-    apiCall('/movie')])
+    apiCall('/movie'), apiCall('/quote')])
 
     localStorage.setItem('book_docs', JSON.stringify(mainData[0]));
     localStorage.setItem('characters_docs', JSON.stringify(mainData[1]))
     localStorage.setItem('movie_docs', JSON.stringify(mainData[2]))
-    // localStorage.setItem('quote_docs', JSON.stringify(mainData[3]))
-
+    localStorage.setItem('quote_docs', JSON.stringify(mainData[3]))
 }
 getAll_data();
 
@@ -63,3 +62,6 @@ export { retrievedBooks }
 let retrievedCharacters = JSON.parse(localStorage.getItem('characters_docs'))
 export { retrievedCharacters }
 //
+
+let savedQuotes = JSON.parse(localStorage.getItem('quote_docs'))
+export { savedQuotes }
