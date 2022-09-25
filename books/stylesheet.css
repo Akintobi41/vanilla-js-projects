@@ -25,8 +25,33 @@ header {
   background-color: red;
 }
 .extras {
+  /* flex-basis: 80%; */
   padding: 1rem;
   border-top: solid 1px rgb(128 128 128 / 30%);
+}
+.wrapper {
+  display: flex;
+}
+.footer-links {
+  display: none;
+  align-self: center;
+  max-width: 25rem;
+}
+.footer-links a {
+  color: #000;
+  text-decoration: none;
+  margin-left: 0.5rem;
+  margin-top: 1.5rem;
+  text-align: center;
+  border-right: solid 1px rgb(128 128 128 / 100%);
+  padding-right: 0.4rem;
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  font-weight: 700;
+}
+.footer-links a:hover {
+  text-decoration: underline;
+  color: rgb(194, 185, 185);
 }
 .view-more {
   text-decoration: none;
@@ -43,6 +68,15 @@ header {
   font-size: 1.2rem;
   font-weight: bold;
   line-height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 50px;
+}
+.book-illustration {
+  display: none;
+  width: 17rem;
+  height: 17rem;
 }
 .recently-added {
   margin-top: 1rem;
@@ -88,12 +122,13 @@ figure {
   color: #000;
   font-weight: bold;
   margin-top: 0.5rem;
+  margin-left: 1rem;
   width: 68%;
 }
 .section-image-1 p,
 .section-image-2 p,
 .section-image-3 p {
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   margin: 0.15rem 0;
 }
 .rating-1,
@@ -134,7 +169,6 @@ figure {
 .book-1-review-link,
 .book-2-review-link,
 .book-3-review-link {
-  /* text-decoration: none; */
   color: #000;
   font-size: 0.7rem;
   align-self: flex-end;
@@ -142,7 +176,7 @@ figure {
 .extras h3 {
   letter-spacing: 1px;
   margin-bottom: 0.5rem;
-  font-size: 1.15rem;
+  font-size: 0.8rem;
 }
 .email-section {
   outline: none;
@@ -162,6 +196,7 @@ figure {
   display: flex;
   flex-direction: column;
   margin-bottom: 0.7rem;
+  /* width: 80%; */
 }
 .submit-button {
   width: 7rem;
@@ -198,7 +233,7 @@ footer {
   position: relative;
 }
 .form-feedback {
-  padding: 1rem;
+  /* padding: 1rem; */
   background-color: aliceblue;
   max-width: 15rem;
   position: relative;
@@ -213,32 +248,27 @@ footer {
 .quotes {
   padding: 1rem;
   padding-bottom: 3rem;
-  min-height: 10rem;
+  height: 10rem;
 }
+
 .quotes h3 {
   padding-bottom: 0.5rem;
-  border-bottom: solid 1px rgb(128 128 128 / 60%);
+  font-size: 0.8rem;
+}
+
+.quotes h3::after {
+  content: "";
+  display: block;
+  margin-top: 0.5rem;
+  width: 50%;
+  height: 1px;
+  background-color: rgb(128 128 128 / 90%);
 }
 .quotes-text {
   font-size: 0.85rem;
   padding: 0.5rem 2rem;
   letter-spacing: 1.5px;
   max-width: 400px;
-}
-.quotes-animate {
-  animation: focus-in-expand 0.8s
-    cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-}
-@keyframes focus-in-expand {
-  0% {
-    letter-spacing: -0.5em;
-    filter: blur(12px);
-    opacity: 0;
-  }
-  100% {
-    filter: blur(0px);
-    opacity: 1;
-  }
 }
 
 @keyframes animatebottom {
@@ -267,5 +297,23 @@ footer {
 @media screen and (min-width: 767px) {
   .book-header-title {
     font-size: 2rem;
+  }
+  .book-illustration {
+    display: block;
+  }
+  .footer-links {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .quotes h3 {
+    font-size: 1rem;
+  }
+  .section-image-1 p,
+  .section-image-2 p,
+  .section-image-3 p {
+    font-size: 1rem;
+  }
+  .extras {
+    flex-basis: 100%;
   }
 }

@@ -88,19 +88,14 @@ articleSection[2].innerHTML += `<p class="book-3-review"><a href="" class="book-
 
 articleFigure[2].classList.add('book-3-image')
 
-
 let origin = document.querySelector('.origin')
 let newYear = new Date().getFullYear();
 
 origin.textContent = newYear;
 
-
 let form = document.querySelector('.form')
 
-
 // E-mail Validation 
-
-
 let mailInput = document.querySelector('.email-section'),
     submitBtn = document.querySelector('.submit-button'),
     formTooltip = document.querySelector('.form-tooltip'),
@@ -108,7 +103,6 @@ let mailInput = document.querySelector('.email-section'),
 
 function validation(e) {
     e.preventDefault();
-
     let pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
     let email = document.querySelector('.email-section').value;
 
@@ -155,21 +149,26 @@ function validation(e) {
 
 submitBtn.addEventListener('click', validation)
 
-
 import { savedQuotes } from "../index.js";
 
 let quotesText = document.querySelector('.quotes-text')
+quotesText.textContent = savedQuotes.docs[Math.floor(Math.random() * 1000)].dialog;
+checkText();
+
+// setInterval(() => {
+//     quotesText.classList.toggle('quotes-animate')
+// }, 5000);
+
 setInterval(() => {
-    let num = Math.floor(Math.random() * 1000);
-    quotesText.textContent = savedQuotes.docs[num].dialog;
-    quotesText.classList.toggle('quotes-animate')
+    let random = Math.floor(Math.random() * 1000);
+    quotesText.textContent = savedQuotes.docs[random].dialog;
     checkText();
-}, 2000);
+}, 7000);
 
 // Truncating quotes text
 function checkText() {
-    return (quotesText.textContent.length > 100) ?
-        (quotesText.textContent = quotesText.textContent.substring(0, 100) + "...")
+    return (quotesText.textContent.length > 70) ?
+        (quotesText.textContent = quotesText.textContent.substring(0, 70) + "...")
         : quotesText.textContent
 }
 
