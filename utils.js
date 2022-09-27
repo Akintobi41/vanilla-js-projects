@@ -19,7 +19,6 @@ export const characterCard = (hero, i, arr) => {
         p_birth = el('p'), p_race = el('p'), p_death = el('p'),
         p_spouse = el('p'), header_section = el('div'),
         btnSection = el('button'), starImg = el('img'), p_more = el('p');
-
     //card character name
     newSection.id = i
     h2.innerHTML = `<a href="${hero.wikiUrl}" 

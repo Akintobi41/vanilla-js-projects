@@ -13,7 +13,6 @@ document.onclick = function (e) {
 hamToggle.onclick = function () {
     hamToggle.classList.toggle("active");
     navigation.classList.toggle("active");
-
 };
 
 
@@ -23,12 +22,9 @@ import { retrievedBooks } from "/index.js"
 
 
 retrievedBooks.forEach(element => {
-
-    let newArticle = document.createElement('article');
-
-    let about_books = document.createElement('section')
-
-    let coverImage = document.createElement('figure')
+    let newArticle = document.createElement('article'),
+        about_books = document.createElement('section'),
+        coverImage = document.createElement('figure')
 
     newArticle.appendChild(coverImage)
     newArticle.appendChild(about_books)
@@ -93,11 +89,8 @@ let newYear = new Date().getFullYear();
 
 origin.textContent = newYear;
 
-let form = document.querySelector('.form')
-
 // E-mail Validation 
-let mailInput = document.querySelector('.email-section'),
-    submitBtn = document.querySelector('.submit-button'),
+let submitBtn = document.querySelector('.submit-button'),
     formTooltip = document.querySelector('.form-tooltip'),
     formFeedback = document.querySelector('.form-feedback')
 
@@ -154,10 +147,6 @@ import { savedQuotes } from "../index.js";
 let quotesText = document.querySelector('.quotes-text')
 quotesText.textContent = savedQuotes.docs[Math.floor(Math.random() * 1000)].dialog;
 checkText();
-
-// setInterval(() => {
-//     quotesText.classList.toggle('quotes-animate')
-// }, 5000);
 
 setInterval(() => {
     let random = Math.floor(Math.random() * 1000);
