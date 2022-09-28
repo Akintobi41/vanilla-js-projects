@@ -51,9 +51,26 @@ function changePage(records_per_page, current_page, content, wrapper) {
     minContent.textContent = end;
     maxContent.textContent = content.length;
     (end > content.length) ? minContent.textContent = content.length : false
-    navigate(btn_next, 'click', next);
-    navigate(btn_prev, 'click', previous);
+
+
+
 }
+
+btn_next.addEventListener('click', callsNext)
+btn_prev.addEventListener('click', callsPrevious)
+
+
+function callsNext() {
+    exactPage++;
+    next(exactPage, sectionData, characterSection)
+}
+
+function callsPrevious() {
+    if (exactPage > 1) exactPage--;
+    previous(exactPage, sectionData, characterSection)
+}
+
+
 
 function numPages(content, records_per_page) {
     return Math.ceil(content.length / records_per_page)
@@ -61,16 +78,17 @@ function numPages(content, records_per_page) {
 
 changePage(10, exactPage, sectionData, characterSection)
 
-function next() {
-    (exactPage < numPages(sectionData, 10)) ?
-        (exactPage++, changePage(10, exactPage, sectionData, characterSection)) : false
+function next(page, data, wrapper) {
+    (page <= numPages(data, 10)) ?
+        (changePage(10, page, data, wrapper)) : false
 }
 
-function previous() {
-    (exactPage > 1) ? (exactPage--,
-        changePage(10, exactPage, sectionData, characterSection)) : false
+function previous(page, data, wrapper) {
+    (page >= 1) ?
+        (changePage(10, page, data, wrapper)) : false
 }
 
+//
 
 
 // Filter by Gender
@@ -78,54 +96,70 @@ function previous() {
 genderSelect.addEventListener('change', genderUI)
 let exactPage1 = 1;
 
-function removeListener() {
-    btn_next.removeEventListener('click', next)
-    btn_prev.removeEventListener('click', previous)
-}
+// const filterItems = (gender) => {
+//     const genders = ['males', 'male', 'females']
+
+//     const newArr = [...sectionData].filter((item) => {
+//         const p_gender = item.children[1].textContent.toLowerCase().slice(8)
+//         if (!gender) return !genders.includes(p_gender);
+//         return p_gender === gender || p_gender === (gender + 's')
+
+//     })
+
+//     changePage(10, exactPage1, genderArr_male, characterSection)
+// }
+
 
 let genderArr_male = sectionData.filter((item) => {
-    return item.children[1].textContent.toLowerCase().slice(8) === 'male'
-        || item.children[1].textContent.toLowerCase().slice(8) === 'males'
+    const p_gender = item.children[1].textContent.toLowerCase().slice(8)
+    return p_gender === 'male' || p_gender === 'males'
 }),
     genderArr_female = sectionData.filter((item) => {
-        return item.children[1].textContent.toLowerCase().slice(8) === 'female'
+        const p_gender = item.children[1].textContent.toLowerCase().slice(8)
+        return p_gender === 'female'
     }),
     genderArr_others = sectionData.filter((item) => {
-        return item.children[1].textContent.toLowerCase().slice(8) != 'male' &&
-            item.children[1].textContent.toLowerCase().slice(8) != 'female' &&
-            item.children[1].textContent.toLowerCase().slice(8) != 'males'
+        const p_gender = item.children[1].textContent.toLowerCase().slice(8);
+        return p_gender != 'male' && p_gender != 'female' && p_gender != 'males'
     });
 
 function maleGender(e) {
-    (e.target.value.toLowerCase() === 'male') ? (removeListener(),
+    (e.target.value.toLowerCase() === 'male') ? (
         changePage(10, exactPage1, genderArr_male, characterSection))
         : false;
 }
 
 function femaleGender(e) {
-    (e.target.value.toLowerCase() === 'female') ? (removeListener(),
+    (e.target.value.toLowerCase() === 'female') ? (
         changePage(10, exactPage1, genderArr_female, characterSection))
         : false;
 }
 
 function otherGender(e) {
     (e.target.value.toLowerCase() != 'female'
-        && e.target.value.toLowerCase() != 'male') ? (removeListener(),
-            changePage(10, exactPage1, genderArr_others, characterSection))
+        && e.target.value.toLowerCase() != 'male') ? (
+        changePage(10, exactPage1, genderArr_others, characterSection))
         : false;
 }
 
 function anyGender(e) {
-    (e.target.value.toLowerCase() === 'any') ? (navigate(btn_next, 'click', next),
-        navigate(btn_prev, 'click', previous),
-        changePage(10, exactPage, sectionData, characterSection)) : false
+    (e.target.value.toLowerCase() === 'any') ?
+        (changePage(10, exactPage1, sectionData, characterSection)) : false
 }
 
 function genderUI(e) {
+    // btn_next.removeEventListener('click', callsNext);
+    // btn_prev.removeEventListener('click', callsPrevious);
+
+
+
     maleGender(e);
     femaleGender(e);
     otherGender(e);
     anyGender(e);
+
+    // filterItems(e)
+
     // function next1() {
     //     (exactPage1 < numPages(genderArr_male, 10)) ?
     //         (exactPage1++, changePage(10, exactPage1, genderArr_male, characterSection)) : false
@@ -136,6 +170,3 @@ function genderUI(e) {
     //         changePage(10, exactPage1, genderArr_male, characterSection)) : false
     // }
 }
-
-
-
