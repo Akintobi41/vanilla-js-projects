@@ -90,6 +90,7 @@
   padding: 1rem;
 }
 .character-section-items {
+  position: relative;
   display: flex;
   flex-direction: column;
   padding: 1rem 0.5rem;
@@ -123,6 +124,11 @@
   filter: invert(44%) sepia(67%) saturate(1082%)
     hue-rotate(347deg) brightness(94%) contrast(91%);
 }
+.unknown {
+  width: 1.4rem;
+  height: 1.4rem;
+  filter: none;
+}
 .character-name {
   font-size: 1.2em;
 }
@@ -133,8 +139,6 @@
   letter-spacing: 1px;
 }
 .character-name a:hover {
-  /* text-decoration: underline; */
-  /* padding-bottom: 1.5rem; */
   color: #0a0a0a;
   border-bottom: solid 1px #5c5454;
   transition: color 1s;
@@ -143,16 +147,20 @@
 .gender-text,
 .race-text,
 .death-text,
-.spouse-text {
+.spouse-text,
+.realm-text,
+.hair-text {
   margin-left: 0.7rem;
   font-size: 0.8rem;
   color: #000;
   max-width: 12rem;
   letter-spacing: 1px;
+  margin-top: 0.01rem;
 }
 .view-more-text {
   display: none;
-  font-size: 0.8rem;
+  position: absolute;
+  font-size: 0.7rem;
   color: #000;
   align-self: flex-end;
   text-decoration: none;
@@ -160,12 +168,13 @@
   cursor: pointer;
   transform: translate(0px, -55px);
 }
+.hair-text,
+.realm-text {
+  display: none;
+}
 .pagination .min-content,
 .pagination .max-content {
   background-color: rgb(255 255 255 / 61%);
-}
-.next {
-  font-size: 2rem;
 }
 .header-section {
   display: flex;
@@ -184,19 +193,28 @@
 .star-img {
   width: 1.3rem;
   height: 1.3rem;
-  filter: invert(118%) sepia(147%) saturate(252%)
-    hue-rotate(314deg) brightness(96%) contrast(86%);
+  filter: invert(100%) sepia(24%) saturate(7482%)
+    hue-rotate(304deg) brightness(109%) contrast(107%);
 }
-
 .btn-section.active .star-img {
-  filter: invert(0%) sepia(77%) saturate(7457%)
-    hue-rotate(208deg) brightness(116%) contrast(100%);
+  filter: invert(27%) sepia(63%) saturate(2858%)
+    hue-rotate(23deg) brightness(100%) contrast(98%);
+}
+.more-info {
+  opacity: 0;
 }
 .pagination .previous {
   background-color: rgb(255 255 255 / 90%);
   cursor: pointer;
 }
 .pagination .previous-button {
+  background: rgb(255 255 255 / 61%);
+  cursor: not-allowed;
+}
+.next {
+  cursor: pointer;
+}
+.pagination .next-button {
   background: rgb(255 255 255 / 61%);
   cursor: not-allowed;
 }
@@ -208,6 +226,52 @@
   letter-spacing: 1px;
   font-weight: 500;
 }
+
+.navigation select {
+  background-color: transparent;
+  border: none;
+  font-size: 1.1rem;
+  padding: 0 0.5rem 0 0.7rem;
+  margin: 0;
+  width: 100%;
+  font-family: inherit;
+  line-height: inherit;
+  outline: none;
+  /* appearance: none; */
+}
+:root {
+  --select-border: #777;
+  --select-focus: blue;
+  --select-arrow: var(--select-border);
+}
+.select {
+  width: 100%;
+  min-width: 9rem;
+  max-width: 30rem;
+  border: 1px solid var(--select-border);
+  border-radius: 0.25em;
+  padding: 0.25em 0.5em;
+  font-size: 1.25rem;
+  cursor: pointer;
+  line-height: 1.1;
+  background-color: transparent;
+  display: grid;
+}
+.select::after {
+  content: "";
+  width: 0.8em;
+  height: 0.5em;
+  background-color: var(--select-arrow);
+  clip-path: polygon(100% 0%, 0 0%, 50% 100%);
+}
+
+option a {
+  font-size: 1.2rem;
+}
+select::-ms-expand {
+  display: none;
+}
+
 #gender-select {
   background-color: transparent;
   border: none;
@@ -216,18 +280,20 @@
 }
 #gender-select:focus,
 #gender-select:active {
-  /* border: none; */
   outline: none;
-  /* text-align: center; */
 }
 
 @media screen and (min-width: 500px) {
   .view-more-text {
     display: block;
+    bottom: 0;
   }
 }
 @media screen and (min-width: 768px) {
   .h1-titles {
     font-size: 4.5rem;
+  }
+  .navigation ul {
+    align-items: center;
   }
 }
