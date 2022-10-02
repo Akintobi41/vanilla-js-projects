@@ -109,7 +109,7 @@ function genderUI(e) {
 contentSearch.addEventListener('input', function (e) {
     genderSelect.value = 'Any';
     const result = e.target.value;
-    g
+
     const new_results = character_docs.filter((hero) => {
         const check = hero.name.toLowerCase();
         return check.startsWith(result)
