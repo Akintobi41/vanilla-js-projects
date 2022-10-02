@@ -230,17 +230,41 @@
 .navigation select {
   background-color: transparent;
   border: none;
-  font-size: 1.1rem;
-  padding: 0 0.5rem 0 0.7rem;
-  margin: 0;
+  font-size: 1rem;
+  color: #fff;
+  opacity: 0.5;
+  padding: 0 0.5rem 0 0.3rem;
+  margin: 0 0 0 0.65rem;
   width: 100%;
   font-family: inherit;
-  line-height: inherit;
+  /* line-height: inherit; */
   outline: none;
-  /* appearance: none; */
+  appearance: none;
+  cursor: pointer;
+}
+.navigation select:hover {
+  color: #f15412;
+  opacity: 0.5;
+}
+.navigation select:active,
+.navigation select:focus {
+  color: #ca886c;
+  opacity: 0.8;
+}
+.navigation select option {
+  background-color: transparent;
+  outline: none;
+}
+.navigation select:focus + .focus {
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  right: -1px;
+  bottom: -1px;
+  border: none;
+  border-radius: inherit;
 }
 :root {
-  --select-border: #777;
   --select-focus: blue;
   --select-arrow: var(--select-border);
 }
@@ -249,27 +273,39 @@
   min-width: 9rem;
   max-width: 30rem;
   border: 1px solid var(--select-border);
-  border-radius: 0.25em;
-  padding: 0.25em 0.5em;
-  font-size: 1.25rem;
+  padding: 0 0.1rem;
+  /* font-size: 1.25rem; */
   cursor: pointer;
   line-height: 1.1;
   background-color: transparent;
   display: grid;
+  grid-template-areas: "select";
+  align-items: center;
 }
 .select::after {
   content: "";
-  width: 0.8em;
-  height: 0.5em;
-  background-color: var(--select-arrow);
+  display: inherit;
+  width: 0.6em;
+  height: 0.3em;
+  background-color: #9e9e9e;
   clip-path: polygon(100% 0%, 0 0%, 50% 100%);
+  justify-self: end;
+}
+.navigation select,
+.select::after {
+  grid-area: select;
 }
 
 option a {
   font-size: 1.2rem;
+  color: green;
 }
 select::-ms-expand {
   display: none;
+}
+.not-found {
+  font-size: 0.9rem;
+  color: #0a0a0a;
 }
 
 #gender-select {
@@ -277,6 +313,7 @@ select::-ms-expand {
   border: none;
   font-size: 0.8rem;
   letter-spacing: 1px;
+  color: #100f0f;
 }
 #gender-select:focus,
 #gender-select:active {
@@ -295,5 +332,13 @@ select::-ms-expand {
   }
   .navigation ul {
     align-items: center;
+  }
+  .navigation select {
+    font-size: 1.2rem;
+    color: #100f0f;
+  }
+  .not-found {
+    font-size: 2rem;
+    text-shadow: 0 0 1px #f15412;
   }
 }

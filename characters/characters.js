@@ -7,22 +7,14 @@ let hamToggle = _.getEl(".hamburger"),
     characterSection = _.getEl('.character-section'),
     minContent = _.getEl('.min-content'),
     maxContent = _.getEl('.max-content'),
-    genderSelect = _.getEl('#gender-select');
-
-
-// Hamburger Menu 
-document.onclick = function (e) {
-    if (e.target !== hamToggle && e.target !== navigation) {
-        _.removeClass(hamToggle, 'active')
-        _.removeClass(navigation, 'active')
-    }
-};
+    genderSelect = _.getEl('#gender-select'),
+    contentSearch = _.getEl('.content-search'),
+    footer = _.getEl('.pagination');
 
 hamToggle.onclick = function () {
     hamToggle.classList.toggle("active");
     navigation.classList.toggle("active");
 };
-//
 
 import { retrievedCharacters } from "../index.js";
 
@@ -96,8 +88,9 @@ genderSelect.addEventListener('change', genderUI)
 function genderUI(e) {
     const gender = e.target.value;
     const knownGenders = ['Males', 'male', 'Male', 'Female']
-
-    if (gender === 'Any') return [...character_docs];
+    sectionData = [];
+    exactPage = 1
+    if (gender === 'Any') character_docs.forEach((val, i) => _.characterCard(val, i, sectionData))
 
     const newArr = [...character_docs].filter((val) => {
         if (gender === 'Other') {
@@ -105,10 +98,33 @@ function genderUI(e) {
         }
         return gender === val.gender || gender === (val.gender + 's')
     })
-    sectionData = [];
-    exactPage = 1
+    // sectionData = [];
+    // exactPage = 1
     newArr.forEach((val, i) => _.characterCard(val, i, sectionData))
     changePage(10, 1, sectionData, characterSection)
 }
 //
+
+// Search for content 
+contentSearch.addEventListener('input', function (e) {
+    genderSelect.value = 'Any';
+    const result = e.target.value;
+    g
+    const new_results = character_docs.filter((hero) => {
+        const check = hero.name.toLowerCase();
+        return check.startsWith(result)
+    });
+
+    sectionData = [];
+    exactPage = 1;
+    new_results.forEach((val, i) => _.characterCard(val, i, sectionData))
+    changePage(10, 1, sectionData, characterSection)
+
+    footer.style.display = 'flex';
+    if (!sectionData.length) {
+        characterSection.innerHTML = `<p class="not-found">Oops, we didn't find anything for<br>  
+                                        "${e.target.value}"</p>`;
+        footer.style.display = "none"
+    }
+})
 

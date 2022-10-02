@@ -63,7 +63,7 @@ header {
   position: relative;
 }
 .navigation {
-  width: 60%;
+  width: 63%;
   height: 100vh;
   background-color: #ff7700;
   position: fixed;
@@ -122,7 +122,7 @@ header {
   margin-top: 7rem;
 }
 .navigation.active ul li {
-  display: inline-block;
+  /* display: inline-block; */
   margin-top: 0.5rem;
   width: 100%;
   padding: 5px;

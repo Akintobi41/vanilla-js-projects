@@ -2,12 +2,12 @@ let hamToggle = document.querySelector(".hamburger"),
     navigation = document.querySelector(".navigation");
 
 // Hamburger Menu
-document.onclick = function (e) {
-    if (e.target !== hamToggle && e.target !== navigation) {
-        hamToggle.classList.remove("active");
-        navigation.classList.remove("active");
-    }
-};
+// document.onclick = function (e) {
+//     if (e.target !== hamToggle && e.target !== navigation) {
+//         hamToggle.classList.remove("active");
+//         navigation.classList.remove("active");
+//     }
+// };
 
 hamToggle.onclick = function () {
     hamToggle.classList.toggle("active");
