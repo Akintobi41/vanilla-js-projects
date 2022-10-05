@@ -26,8 +26,6 @@ character_docs.forEach((val, i) => _.characterCard(val, i, sectionData));
 // Pagination
 let exactPage = 1;
 
-// Adding event listeners
-
 function changePage(records_per_page, current_page, content, wrapper) {
     wrapper.innerHTML = '';
     current_page--;
@@ -86,6 +84,7 @@ function previous(page, data, wrapper) {
 genderSelect.addEventListener('change', genderUI)
 
 function genderUI(e) {
+    contentSearch.value = '';
     const gender = e.target.value;
     const knownGenders = ['Males', 'male', 'Male', 'Female']
     sectionData = [];
@@ -98,8 +97,7 @@ function genderUI(e) {
         }
         return gender === val.gender || gender === (val.gender + 's')
     })
-    // sectionData = [];
-    // exactPage = 1
+
     newArr.forEach((val, i) => _.characterCard(val, i, sectionData))
     changePage(10, 1, sectionData, characterSection)
 }
@@ -108,7 +106,7 @@ function genderUI(e) {
 // Search for content 
 contentSearch.addEventListener('input', function (e) {
     genderSelect.value = 'Any';
-    const result = e.target.value;
+    const result = e.target.value.toLowerCase();
 
     const new_results = character_docs.filter((hero) => {
         const check = hero.name.toLowerCase();

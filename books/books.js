@@ -15,8 +15,6 @@ hamToggle.onclick = function () {
     navigation.classList.toggle("active");
 };
 
-
-
 // Importing books from index.js 
 import { retrievedBooks } from "/index.js"
 

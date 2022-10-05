@@ -50,6 +50,7 @@
 .content-search:active,
 .content-search:focus {
   border: none;
+  box-shadow: 0 0 2px #f15412;
 }
 ::placeholder {
   font-size: 0.65rem;
@@ -162,6 +163,7 @@
   position: absolute;
   font-size: 0.7rem;
   color: #000;
+  text-shadow: 0 0 2px #f15412;
   align-self: flex-end;
   text-decoration: none;
   margin-right: 0.5rem;
@@ -237,7 +239,6 @@
   margin: 0 0 0 0.65rem;
   width: 100%;
   font-family: inherit;
-  /* line-height: inherit; */
   outline: none;
   appearance: none;
   cursor: pointer;
@@ -274,7 +275,6 @@
   max-width: 30rem;
   border: 1px solid var(--select-border);
   padding: 0 0.1rem;
-  /* font-size: 1.25rem; */
   cursor: pointer;
   line-height: 1.1;
   background-color: transparent;
@@ -305,7 +305,7 @@ select::-ms-expand {
 }
 .not-found {
   font-size: 0.9rem;
-  color: #0a0a0a;
+  color: #000;
 }
 
 #gender-select {
