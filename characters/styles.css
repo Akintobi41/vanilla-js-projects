@@ -319,6 +319,21 @@ select::-ms-expand {
 #gender-select:active {
   outline: none;
 }
+footer {
+  position: relative;
+  bottom: 0;
+  padding: 1.3rem 0;
+  text-align: center;
+  word-spacing: 5px;
+  color: rgb(8 8 8);
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.footer-text {
+  font-size: 0.9rem;
+  font-weight: bold;
+}
 
 @media screen and (min-width: 500px) {
   .view-more-text {

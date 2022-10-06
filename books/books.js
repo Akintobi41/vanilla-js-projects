@@ -154,8 +154,8 @@ setInterval(() => {
 
 // Truncating quotes text
 function checkText() {
-    return (quotesText.textContent.length > 70) ?
-        (quotesText.textContent = quotesText.textContent.substring(0, 70) + "...")
+    return (quotesText.textContent.length > 60) ?
+        (quotesText.textContent = quotesText.textContent.substring(0, 60) + "...")
         : quotesText.textContent
 }
 

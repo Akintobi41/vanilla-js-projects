@@ -114,3 +114,7 @@ export function hoverFav(element, listener) {
             element.setAttribute('title', 'Add to Favorites')
     })
 }
+
+// How is the favorites qpage gioin to be ?
+
+

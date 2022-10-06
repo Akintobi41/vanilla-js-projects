@@ -1,0 +1,56 @@
+.main-content {
+  min-height: 100vh;
+  height: auto;
+}
+.main-title {
+  padding: 0 1rem;
+  line-height: 35px;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  display: flex;
+}
+.main-title h1 {
+  font-size: 1.2rem;
+  max-width: 400px;
+}
+details {
+  position: relative;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+details:hover {
+  background: rgb(122 120 120 / 50%);
+}
+details div {
+  padding: 0 1.5rem;
+}
+details p {
+  font-size: 0.7rem;
+  letter-spacing: 0.7px;
+  text-decoration: underline;
+  margin-top: 0.2rem;
+}
+footer {
+  position: relative;
+  padding: 1rem 0 0 0;
+  text-align: center;
+  word-spacing: 5px;
+  color: rgb(8 8 8);
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.footer-text {
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+@media screen and (min-width: 767px) {
+  .main-title {
+    justify-content: center;
+  }
+  .main-title h1 {
+    font-size: 3rem;
+    line-height: 55px;
+  }
+}

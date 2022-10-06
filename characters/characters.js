@@ -9,7 +9,8 @@ let hamToggle = _.getEl(".hamburger"),
     maxContent = _.getEl('.max-content'),
     genderSelect = _.getEl('#gender-select'),
     contentSearch = _.getEl('.content-search'),
-    footer = _.getEl('.pagination');
+    footer = _.getEl('.pagination'),
+    footer2 = _.getEl('footer')
 
 hamToggle.onclick = function () {
     hamToggle.classList.toggle("active");
@@ -119,10 +120,16 @@ contentSearch.addEventListener('input', function (e) {
     changePage(10, 1, sectionData, characterSection)
 
     footer.style.display = 'flex';
+    footer2.style.display = 'block'
     if (!sectionData.length) {
         characterSection.innerHTML = `<p class="not-found">Oops, we didn't find anything for<br>  
                                         "${e.target.value}"</p>`;
         footer.style.display = "none"
+        footer2.style.display = 'none';
     }
 })
 
+let origin = document.querySelector('.origin')
+let newYear = new Date().getFullYear();
+
+origin.textContent = newYear;
