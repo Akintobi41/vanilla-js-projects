@@ -334,6 +334,10 @@ footer {
   font-size: 0.9rem;
   font-weight: bold;
 }
+.favorite-text {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
 
 @media screen and (min-width: 500px) {
   .view-more-text {

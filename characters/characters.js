@@ -120,16 +120,49 @@ contentSearch.addEventListener('input', function (e) {
     changePage(10, 1, sectionData, characterSection)
 
     footer.style.display = 'flex';
-    footer2.style.display = 'block'
     if (!sectionData.length) {
         characterSection.innerHTML = `<p class="not-found">Oops, we didn't find anything for<br>  
                                         "${e.target.value}"</p>`;
         footer.style.display = "none"
-        footer2.style.display = 'none';
     }
 })
 
-let origin = document.querySelector('.origin')
-let newYear = new Date().getFullYear();
-
+let origin = document.querySelector('.origin'),
+    newYear = new Date().getFullYear();
 origin.textContent = newYear;
+
+//Favorites Section
+let favSelect = _.getEl('.section-select')
+
+favSelect.addEventListener('change', function (e) {
+    changeSection(e)
+})
+
+function changeSection(e) {
+    let type = e.target.value;
+    (type == 0) ? changePage(10, exactPage, sectionData, characterSection) : favToggle()
+}
+
+function favToggle() {
+    footer.style.display = 'flex';
+    footer2.style.display = 'block';
+    changePage(10, exactPage, _.favorites, characterSection)
+    characterSection.addEventListener('click', function (e) {
+        removeFav(e)
+    })
+    if (!_.favorites.length) noContent()
+}
+
+function removeFav(e) {
+    const el = e.target.classList.value;
+    const elParent = e.target.parentElement.parentElement.parentElement;
+    if (el === 'star-img') {
+        characterSection.removeChild(elParent)
+        changePage(10, exactPage, _.favorites, characterSection)
+    }
+}
+
+function noContent() {
+    characterSection.innerHTML = '<p class="favorite-text">No Favorites yet...</p>'
+    footer.style.display = "none"
+}

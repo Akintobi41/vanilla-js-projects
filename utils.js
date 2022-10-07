@@ -100,9 +100,20 @@ export const characterCard = (hero, i, arr) => {
 
 const viewMore = (element) => element.style.display = "block";
 
+export let favorites = [];
+
 export function addToFav(element, listener) {
-    element.addEventListener(listener, function () {
+    element.addEventListener(listener, function (e) {
         element.classList.toggle('active');
+        let parent_el = element.parentElement.parentElement;
+        if (element.classList.value.includes('active')) {
+            favorites.push(parent_el)
+        } else {
+            let newM = favorites.filter((item) => {
+                return (item != parent_el)
+            })
+            favorites = newM
+        }
     });
 }
 
@@ -114,7 +125,5 @@ export function hoverFav(element, listener) {
             element.setAttribute('title', 'Add to Favorites')
     })
 }
-
-// How is the favorites qpage gioin to be ?
 
 
