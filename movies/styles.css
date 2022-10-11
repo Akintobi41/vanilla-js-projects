@@ -48,7 +48,9 @@ footer {
   font-size: 0.9rem;
   font-weight: bold;
 }
-
+.movie-link {
+  opacity: 0.44;
+}
 @media screen and (min-width: 767px) {
   .main-title {
     justify-content: center;

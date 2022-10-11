@@ -9,8 +9,8 @@ let hamToggle = _.getEl(".hamburger"),
     maxContent = _.getEl('.max-content'),
     genderSelect = _.getEl('#gender-select'),
     contentSearch = _.getEl('.content-search'),
-    footer = _.getEl('.pagination'),
-    footer2 = _.getEl('footer')
+    footer = _.getEl('.pagination');
+// footer2 = _.getEl('footer');
 
 hamToggle.onclick = function () {
     hamToggle.classList.toggle("active");
@@ -36,7 +36,6 @@ function changePage(records_per_page, current_page, content, wrapper) {
         paginatedItems = content.slice(start, end);
 
     paginatedItems.forEach((items) => wrapper.append(items));   // Appending items to DOM
-
     ((current_page + 1) != 1) ?
         btn_prev.classList.remove("previous-button") :
         _.addClass(btn_prev, "previous-button");
@@ -132,37 +131,23 @@ let origin = document.querySelector('.origin'),
 origin.textContent = newYear;
 
 //Favorites Section
-let favSelect = _.getEl('.section-select')
 
-favSelect.addEventListener('change', function (e) {
-    changeSection(e)
-})
+_.favSelect.addEventListener('change', changeSection)
+
 
 function changeSection(e) {
     let type = e.target.value;
-    (type == 0) ? changePage(10, exactPage, sectionData, characterSection) : favToggle()
-}
+    sectionData = [];
+    exactPage = 1;
 
-function favToggle() {
-    footer.style.display = 'flex';
-    footer2.style.display = 'block';
-    changePage(10, exactPage, _.favorites, characterSection)
-    characterSection.addEventListener('click', function (e) {
-        removeFav(e)
-    })
-    if (!_.favorites.length) noContent()
-}
-
-function removeFav(e) {
-    const el = e.target.classList.value;
-    const elParent = e.target.parentElement.parentElement.parentElement;
-    if (el === 'star-img') {
-        characterSection.removeChild(elParent)
-        changePage(10, exactPage, _.favorites, characterSection)
+    if (type === 'characters') {
+        character_docs.forEach((val, i) => _.characterCard(val, i, sectionData))
+    } else {
+        _.favorites.forEach((val, i) => _.characterCard(val, i, sectionData))
+        sectionData.forEach((item) => {
+            let btn = item.children[0].children[0];
+            item.children[0].children[0].classList.add('active')
+        })
     }
-}
-
-function noContent() {
-    characterSection.innerHTML = '<p class="favorite-text">No Favorites yet...</p>'
-    footer.style.display = "none"
+    changePage(10, exactPage, sectionData, characterSection)
 }

@@ -1,3 +1,7 @@
+import { retrievedCharacters } from "../index.js";
+const characters = retrievedCharacters.docs;
+
+
 const gender = {
     male: "/Images/man.svg",
     female: "/Images/woman.svg",
@@ -13,6 +17,7 @@ export const removeClass = (el, name) => el.classList.remove(name)
 export const append = (el, child) => el.appendChild(child)
 
 export const getEl = (e) => document.querySelector(e)
+export const favSelect = getEl('.section-select');
 
 export const characterCard = (hero, i, arr) => {
     const newSection = el('section'), header = el('header'),
@@ -23,7 +28,7 @@ export const characterCard = (hero, i, arr) => {
         p_hair = el('p');
 
     // card character name
-    newSection.id = i
+    newSection.id = i;
     h2.innerHTML = `<a href="${hero.wikiUrl}" 
         title="click to learn more about ${hero.name}"> 
         ${hero.name}</a>`;
@@ -33,6 +38,7 @@ export const characterCard = (hero, i, arr) => {
     addToFav(btnSection, "click");
     hoverFav(btnSection, "mouseover");
     //
+    starImg.id = hero._id   /// trial
     img.src = gender[hero.gender && hero.gender?.toString() !== "NaN" ?
         hero.gender === "Female" ? 'female' : 'male' :
         'unknown'];
@@ -102,17 +108,25 @@ const viewMore = (element) => element.style.display = "block";
 
 export let favorites = [];
 
+export let newData = [];
+
 export function addToFav(element, listener) {
     element.addEventListener(listener, function (e) {
         element.classList.toggle('active');
-        let parent_el = element.parentElement.parentElement;
+
+        let el_id = e.target.id
         if (element.classList.value.includes('active')) {
-            favorites.push(parent_el)
-        } else {
-            let newM = favorites.filter((item) => {
-                return (item != parent_el)
+            let new_fav = characters.filter((item) => {
+                return item._id === el_id
             })
-            favorites = newM
+            favorites.push(...new_fav)
+        } else {
+
+            newData = favorites.filter((item) => {
+                return !(item._id === el_id)
+            })
+            favorites = newData;
+
         }
     });
 }
