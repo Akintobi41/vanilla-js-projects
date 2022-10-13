@@ -13,6 +13,7 @@ hamToggle.onclick = function () {
     hamToggle.classList.toggle("active");
     navigation.classList.toggle("active");
 };
+
 // API End-point and Key
 const baseURL = 'https://the-one-api.dev/v2',
     key = 'BgzGDjkis8Ra13B9XxTF';

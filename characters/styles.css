@@ -58,6 +58,7 @@
 .pagination {
   display: flex;
   justify-content: center;
+  padding-bottom: 1rem;
 }
 .pagination button {
   width: 2.3rem;
@@ -315,14 +316,28 @@ select::-ms-expand {
   letter-spacing: 1px;
   color: #100f0f;
 }
+.gender {
+  width: 3rem;
+}
+.gender-type {
+  width: 4rem;
+}
+.gender-option {
+  width: 5rem;
+}
+#gender-select > option {
+  width: 50px;
+}
 #gender-select:focus,
 #gender-select:active {
   outline: none;
 }
+.gender-option {
+  width: 5rem;
+}
 footer {
-  position: relative;
-  bottom: 0;
-  padding: 1.3rem 0;
+  position: absolute;
+  bottom: -20px;
   text-align: center;
   word-spacing: 5px;
   color: rgb(8 8 8);
@@ -331,8 +346,8 @@ footer {
   width: 100%;
 }
 .footer-text {
-  font-size: 0.9rem;
   font-weight: bold;
+  color: #9b9893;
 }
 .favorite-text {
   font-size: 1.5rem;

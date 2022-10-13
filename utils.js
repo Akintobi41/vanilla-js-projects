@@ -1,7 +1,6 @@
 import { retrievedCharacters } from "../index.js";
 const characters = retrievedCharacters.docs;
 
-
 const gender = {
     male: "/Images/man.svg",
     female: "/Images/woman.svg",
@@ -121,7 +120,6 @@ export function addToFav(element, listener) {
             })
             favorites.push(...new_fav)
         } else {
-
             newData = favorites.filter((item) => {
                 return !(item._id === el_id)
             })

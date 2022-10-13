@@ -214,17 +214,18 @@ figure {
   background-color: #853316;
 }
 footer {
-  padding: 1rem 0 0 0;
   text-align: center;
   word-spacing: 5px;
   color: rgb(8 8 8);
   display: flex;
   justify-content: center;
   width: 100%;
+  position: absolute;
+  bottom: -20px;
 }
 .footer-text {
-  font-size: 0.9rem;
   font-weight: bold;
+  color: #9b9893;
 }
 .form-tooltip {
   content: "";
@@ -238,6 +239,7 @@ footer {
   position: relative;
   text-align: center;
   opacity: 0;
+  padding: 0.5rem;
 }
 .form-response {
   animation-name: animatebottom;

@@ -10,7 +10,6 @@ let hamToggle = _.getEl(".hamburger"),
     genderSelect = _.getEl('#gender-select'),
     contentSearch = _.getEl('.content-search'),
     footer = _.getEl('.pagination');
-// footer2 = _.getEl('footer');
 
 hamToggle.onclick = function () {
     hamToggle.classList.toggle("active");
@@ -83,6 +82,26 @@ function previous(page, data, wrapper) {
 // Filter by Gender
 genderSelect.addEventListener('change', genderUI)
 
+genderSelect.addEventListener('change', changeWidth) // Width styling when you change option
+function changeWidth(e) {
+    const option = e.target.value,
+        genders = ['Male', 'Other'];
+
+    _.removeClass(genderSelect, 'gender-type')
+    _.removeClass(genderSelect, 'gender-option')
+
+    if (option === 'Female') {
+        _.removeClass(genderSelect, 'gender-type')
+        _.addClass(genderSelect, 'gender-option')
+    }
+    genders.forEach((item) => {
+        if (item.includes(e.target.value)) {
+            _.addClass(genderSelect, 'gender-type')
+        }
+    })
+
+}
+
 function genderUI(e) {
     contentSearch.value = '';
     const gender = e.target.value;
@@ -133,7 +152,6 @@ origin.textContent = newYear;
 //Favorites Section
 
 _.favSelect.addEventListener('change', changeSection)
-
 
 function changeSection(e) {
     let type = e.target.value;

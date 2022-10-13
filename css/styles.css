@@ -61,6 +61,10 @@ header {
 }
 .main-content-inside {
   position: relative;
+  min-height: 100vh;
+}
+.inside {
+  min-height: auto;
 }
 .navigation {
   width: 63%;

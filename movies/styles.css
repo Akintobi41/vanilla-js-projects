@@ -29,14 +29,13 @@ details div {
   padding: 0 1.5rem;
 }
 details p {
-  font-size: 0.7rem;
-  letter-spacing: 0.7px;
+  font-size: 0.8rem;
+  letter-spacing: 0.8px;
   text-decoration: underline;
   margin-top: 0.2rem;
 }
 footer {
-  position: relative;
-  padding: 1rem 0 0 0;
+  position: absolute;
   text-align: center;
   word-spacing: 5px;
   color: rgb(8 8 8);
@@ -45,7 +44,7 @@ footer {
   width: 100%;
 }
 .footer-text {
-  font-size: 0.9rem;
+  color: #9b9893;
   font-weight: bold;
 }
 .movie-link {
