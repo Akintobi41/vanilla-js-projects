@@ -63,7 +63,7 @@ export const characterCard = (hero, i, arr) => {
         hero.realm : 'unknown'}`
     p_hair.textContent = `Hair: ${(hero.hair && hero.hair.toString() != 'NaN') ?
         hero.hair : 'unknown'}`
-
+    // Appending elements
     append(header_section, img)
     append(header_section, h2)
     append(btnSection, starImg)
