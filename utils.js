@@ -1,4 +1,6 @@
 import { retrievedCharacters } from "../index.js";
+import { changePage, exactPage, sectionData, characterSection } from "./characters/characters.js";
+
 const characters = retrievedCharacters.docs;
 
 const gender = {
@@ -34,8 +36,8 @@ export const characterCard = (hero, i, arr) => {
 
     // favorites button
     starImg.src = '/Images/star-sharp.svg';
-    addToFav(btnSection, "click");
-    hoverFav(btnSection, "mouseover");
+    // addToFav(btnSection, "click");
+    // hoverFav(btnSection, "mouseover");
     //
     starImg.id = hero._id   /// trial
     img.src = gender[hero.gender && hero.gender?.toString() !== "NaN" ?
@@ -109,25 +111,31 @@ export let favorites = [];
 
 export let newData = [];
 
-export function addToFav(element, listener) {
-    element.addEventListener(listener, function (e) {
-        element.classList.toggle('active');
+export let favChecker = 0;
 
-        let el_id = e.target.id
-        if (element.classList.value.includes('active')) {
-            let new_fav = characters.filter((item) => {
-                return item._id === el_id
-            })
-            favorites.push(...new_fav)
-        } else {
-            newData = favorites.filter((item) => {
-                return !(item._id === el_id)
-            })
-            favorites = newData;
+// export function addToFav(element, listener) {
+//     element.addEventListener(listener, function (e) {
+//         element.classList.toggle('active');
+//         favChecker++;
+//         let el_id = e.target.id
+//         if (element.classList.value.includes('active')) {
+//             let new_fav = characters.filter((item) => {
+//                 return item._id === el_id
+//             })
+//             favorites.push(...new_fav)
+//         } else {
+//             newData = favorites.filter((item) => {
+//                 return !(item._id === el_id)
+//             })
+//             favorites = newData;
 
-        }
-    });
-}
+//             const root_el = e.target.parentElement.parentElement.parentElement.parentElement;
+//             const child_el = e.target.parentElement.parentElement.parentElement;
+//             root_el.removeChild(child_el)
+//             console.log(child_el)
+//         }
+//     });
+// }
 
 export function hoverFav(element, listener) {
     const e_class = element.classList;

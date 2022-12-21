@@ -4,12 +4,12 @@ let hamToggle = _.getEl(".hamburger"),
     navigation = _.getEl(".navigation"),
     btn_prev = _.getEl('.previous'),
     btn_next = _.getEl('.next'),
-    characterSection = _.getEl('.character-section'),
     minContent = _.getEl('.min-content'),
     maxContent = _.getEl('.max-content'),
     genderSelect = _.getEl('#gender-select'),
     contentSearch = _.getEl('.content-search'),
     footer = _.getEl('.pagination');
+export let characterSection = _.getEl('.character-section');
 
 hamToggle.onclick = function () {
     hamToggle.classList.toggle("active");
@@ -18,15 +18,15 @@ hamToggle.onclick = function () {
 
 import { retrievedCharacters } from "../index.js";
 
-let character_docs = retrievedCharacters.docs,
+export let character_docs = retrievedCharacters.docs,
     sectionData = [];
 
 character_docs.forEach((val, i) => _.characterCard(val, i, sectionData));
 
 // Pagination
-let exactPage = 1;
+export let exactPage = 1;
 
-function changePage(records_per_page, current_page, content, wrapper) {
+export function changePage(records_per_page, current_page, content, wrapper) {
     wrapper.innerHTML = '';
     current_page--;
 
@@ -151,21 +151,23 @@ origin.textContent = newYear;
 
 //Favorites Section
 
-_.favSelect.addEventListener('change', changeSection)
+// _.favSelect.addEventListener('change', changeSection)
 
-function changeSection(e) {
-    let type = e.target.value;
-    sectionData = [];
-    exactPage = 1;
+// function changeSection(e) {
+//     let type = e.target.value;
+//     sectionData = [];
+//     exactPage = 1;
 
-    if (type === 'characters') {
-        character_docs.forEach((val, i) => _.characterCard(val, i, sectionData))
-    } else {
-        _.favorites.forEach((val, i) => _.characterCard(val, i, sectionData))
-        sectionData.forEach((item) => {
-            let btn = item.children[0].children[0];
-            item.children[0].children[0].classList.add('active')
-        })
-    }
-    changePage(10, exactPage, sectionData, characterSection)
-}
+//     if (type === 'characters') {
+//         character_docs.forEach((val, i) => _.characterCard(val, i, sectionData))
+//     } else {
+//         _.favorites.forEach((val, i) => _.characterCard(val, i, sectionData))
+//         sectionData.forEach((item) => {
+//             // let btn = item.children[0].children[0];
+//             item.children[0].children[0].classList.add('active')
+//             // console.log(type)
+//             // console.log(item.children[0].children[0])
+//         })
+//     }
+//     changePage(10, exactPage, sectionData, characterSection)
+// }

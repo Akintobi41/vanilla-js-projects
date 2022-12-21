@@ -116,7 +116,7 @@ function validation(e) {
 
     } else {
         formTooltip.textContent = "Please Enter A Valid Email Address* "
-        formTooltip.style.color = "red"
+        formTooltip.style.color = "#000"
         submitBtn.setAttribute('disabled', 'disabled')
         submitBtn.style.cursor = "not-allowed"
 
