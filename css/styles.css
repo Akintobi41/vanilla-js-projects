@@ -6,8 +6,9 @@
 }
 body {
   margin: auto;
-  /* max-width: 1500px; */
   position: relative;
+  height: 100vh;
+  /* overflow: hidden; */
 }
 .h1-title {
   font-family: "Dancing Script", cursive;

@@ -36,12 +36,14 @@ details p {
 }
 footer {
   position: absolute;
+  bottom: 0;
   text-align: center;
   word-spacing: 5px;
   color: rgb(8 8 8);
   display: flex;
   justify-content: center;
   width: 100%;
+  padding-bottom: 1.5rem;
 }
 .footer-text {
   color: #9b9893;

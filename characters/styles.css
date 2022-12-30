@@ -58,7 +58,8 @@
 .pagination {
   display: flex;
   justify-content: center;
-  padding-bottom: 1.5rem;
+  margin-bottom: 0.5rem;
+  /* padding-bottom: 1.5rem; */
 }
 .pagination button {
   width: 2.3rem;
@@ -314,8 +315,8 @@ select::-ms-expand {
   width: 5rem;
 }
 footer {
-  position: absolute;
-  bottom: -17px;
+  /* position: absolute; */
+  /* bottom: -17px; */
   text-align: center;
   word-spacing: 5px;
   color: rgb(8 8 8);

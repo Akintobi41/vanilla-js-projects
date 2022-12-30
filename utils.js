@@ -1,8 +1,8 @@
 import { retrievedCharacters } from "../index.js";
-import { changePage, exactPage, sectionData, characterSection } from "./characters/characters.js";
-
-const characters = retrievedCharacters.docs;
-
+// import { changePage, exactPage, sectionData, characterSection } from "./characters/characters.js";
+// 
+// const characters = retrievedCharacters.docs;
+// 
 const gender = {
     male: "/Images/man.svg",
     female: "/Images/woman.svg",
