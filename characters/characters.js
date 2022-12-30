@@ -1,4 +1,5 @@
 import * as _ from "../utils.js";
+console.log(_)
 
 let hamToggle = _.getEl(".hamburger"),
     navigation = _.getEl(".navigation"),
@@ -149,25 +150,3 @@ let origin = document.querySelector('.origin'),
     newYear = new Date().getFullYear();
 origin.textContent = newYear;
 
-//Favorites Section
-
-// _.favSelect.addEventListener('change', changeSection)
-
-// function changeSection(e) {
-//     let type = e.target.value;
-//     sectionData = [];
-//     exactPage = 1;
-
-//     if (type === 'characters') {
-//         character_docs.forEach((val, i) => _.characterCard(val, i, sectionData))
-//     } else {
-//         _.favorites.forEach((val, i) => _.characterCard(val, i, sectionData))
-//         sectionData.forEach((item) => {
-//             // let btn = item.children[0].children[0];
-//             item.children[0].children[0].classList.add('active')
-//             // console.log(type)
-//             // console.log(item.children[0].children[0])
-//         })
-//     }
-//     changePage(10, exactPage, sectionData, characterSection)
-// }

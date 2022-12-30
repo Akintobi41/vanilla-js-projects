@@ -226,6 +226,7 @@ footer {
 .footer-text {
   font-weight: bold;
   color: #9b9893;
+  padding-bottom: 0.5rem;
 }
 .form-tooltip {
   content: "";

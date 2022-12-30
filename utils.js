@@ -18,6 +18,7 @@ export const removeClass = (el, name) => el.classList.remove(name)
 export const append = (el, child) => el.appendChild(child)
 
 export const getEl = (e) => document.querySelector(e)
+
 export const favSelect = getEl('.section-select');
 
 export const characterCard = (hero, i, arr) => {
@@ -36,8 +37,6 @@ export const characterCard = (hero, i, arr) => {
 
     // favorites button
     starImg.src = '/Images/star-sharp.svg';
-    // addToFav(btnSection, "click");
-    // hoverFav(btnSection, "mouseover");
     //
     starImg.id = hero._id   /// trial
     img.src = gender[hero.gender && hero.gender?.toString() !== "NaN" ?
@@ -107,43 +106,5 @@ export const characterCard = (hero, i, arr) => {
 
 const viewMore = (element) => element.style.display = "block";
 
-export let favorites = [];
-
-export let newData = [];
-
-export let favChecker = 0;
-
-// export function addToFav(element, listener) {
-//     element.addEventListener(listener, function (e) {
-//         element.classList.toggle('active');
-//         favChecker++;
-//         let el_id = e.target.id
-//         if (element.classList.value.includes('active')) {
-//             let new_fav = characters.filter((item) => {
-//                 return item._id === el_id
-//             })
-//             favorites.push(...new_fav)
-//         } else {
-//             newData = favorites.filter((item) => {
-//                 return !(item._id === el_id)
-//             })
-//             favorites = newData;
-
-//             const root_el = e.target.parentElement.parentElement.parentElement.parentElement;
-//             const child_el = e.target.parentElement.parentElement.parentElement;
-//             root_el.removeChild(child_el)
-//             console.log(child_el)
-//         }
-//     });
-// }
-
-export function hoverFav(element, listener) {
-    const e_class = element.classList;
-    element.addEventListener(listener, function () {
-        (e_class[e_class.length - 1].includes('active')) ?
-            element.setAttribute('title', 'Remove from Favorites') :
-            element.setAttribute('title', 'Add to Favorites')
-    })
-}
 
 
