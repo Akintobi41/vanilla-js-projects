@@ -1,8 +1,4 @@
-import { retrievedCharacters } from "../index.js";
-// import { changePage, exactPage, sectionData, characterSection } from "./characters/characters.js";
-// 
-// const characters = retrievedCharacters.docs;
-// 
+
 const gender = {
     male: "/Images/man.svg",
     female: "/Images/woman.svg",
@@ -35,9 +31,6 @@ export const characterCard = (hero, i, arr) => {
         title="click to learn more about ${hero.name}"> 
         ${hero.name}</a>`;
 
-    // favorites button
-    starImg.src = '/Images/star-sharp.svg';
-    //
     starImg.id = hero._id   /// trial
     img.src = gender[hero.gender && hero.gender?.toString() !== "NaN" ?
         hero.gender === "Female" ? 'female' : 'male' :
@@ -47,7 +40,6 @@ export const characterCard = (hero, i, arr) => {
     if (!(hero.gender?.endsWith('le' || 'les'))) addClass(img, 'unknown');
     // Adding attributes for the images
     img.setAttribute('alt', "gender-type")
-    starImg.setAttribute('alt', 'add to favorites')
     //
     p_birth.textContent = `Birth: ${(hero.birth && hero.gender.toString() != 'NaN') ?
         hero.gender : 'unknown'}`
@@ -59,7 +51,7 @@ export const characterCard = (hero, i, arr) => {
         hero.death : 'unknown'}`
     p_spouse.textContent = `Spouse: ${(hero.spouse && hero.spouse.toString() != 'NaN') ?
         hero.spouse : 'unknown'}`
-    p_more.textContent = 'View more...'
+    p_more.textContent = 'view more...'
     p_realm.textContent = `Realm: ${(hero.realm && hero.realm.toString() != 'NaN') ?
         hero.realm : 'unknown'}`
     p_hair.textContent = `Hair: ${(hero.hair && hero.hair.toString() != 'NaN') ?
@@ -97,14 +89,22 @@ export const characterCard = (hero, i, arr) => {
     addClass(p_hair, 'hair-text');
 
     p_more.addEventListener('click', function () {
-        viewMore(p_realm)
-        viewMore(p_hair)
-        addClass(p_more, "more-info")
+
+        if (p_more.textContent.endsWith('less')) {
+            viewMore(p_realm, 'none')
+            viewMore(p_hair, 'none')
+            p_more.textContent = 'view more...'
+        }
+        else {
+            viewMore(p_realm, 'block')
+            viewMore(p_hair, 'block')
+            p_more.textContent = 'view less'
+        }
     })
     arr = arr.push(newSection)
 }
 
-const viewMore = (element) => element.style.display = "block";
+const viewMore = (element, style) => element.style.display = style;
 
 
 

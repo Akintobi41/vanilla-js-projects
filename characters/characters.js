@@ -1,5 +1,4 @@
 import * as _ from "../utils.js";
-console.log(_)
 
 let hamToggle = _.getEl(".hamburger"),
     navigation = _.getEl(".navigation"),
@@ -48,10 +47,8 @@ export function changePage(records_per_page, current_page, content, wrapper) {
     maxContent.textContent = content.length;
     (end > content.length) ? minContent.textContent = content.length : false
 }
-
 btn_next.addEventListener('click', callsNext)
 btn_prev.addEventListener('click', callsPrevious)
-
 
 function callsNext() {
     if (exactPage < numPages(sectionData, 10)) exactPage++;
@@ -85,6 +82,7 @@ genderSelect.addEventListener('change', genderUI)
 
 genderSelect.addEventListener('change', changeWidth) // Width styling when you change option
 function changeWidth(e) {
+
     const option = e.target.value,
         genders = ['Male', 'Other'];
 
@@ -122,7 +120,6 @@ function genderUI(e) {
     changePage(10, 1, sectionData, characterSection)
 }
 //
-
 // Search for content 
 contentSearch.addEventListener('input', function (e) {
     genderSelect.value = 'Any';

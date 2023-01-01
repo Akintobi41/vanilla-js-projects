@@ -58,8 +58,19 @@
 .pagination {
   display: flex;
   justify-content: center;
-  margin-bottom: 0.5rem;
-  /* padding-bottom: 1.5rem; */
+  width: 100%;
+  align-items: center;
+  padding: 0.5rem 0;
+}
+
+footer {
+  text-align: center;
+  word-spacing: 5px;
+  color: rgb(8 8 8);
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: -0.5rem;
 }
 .pagination button {
   width: 2.3rem;
@@ -185,20 +196,8 @@
   align-items: center;
 }
 .btn-section {
-  width: 1.7rem;
-  height: 1.7rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   border: none;
   background: transparent;
-  cursor: pointer;
-}
-.star-img {
-  width: 1.3rem;
-  height: 1.3rem;
-  filter: invert(100%) sepia(24%) saturate(7482%)
-    hue-rotate(304deg) brightness(109%) contrast(107%);
 }
 .btn-section.active .star-img {
   filter: invert(27%) sepia(63%) saturate(2858%)
@@ -258,10 +257,7 @@
   background-color: transparent;
   outline: none;
 }
-:root {
-  --select-focus: blue;
-  --select-arrow: var(--select-border);
-}
+
 .select {
   width: 100%;
   min-width: 9rem;
@@ -314,17 +310,12 @@ select::-ms-expand {
 .gender-option {
   width: 5rem;
 }
-footer {
-  /* position: absolute; */
-  /* bottom: -17px; */
-  text-align: center;
-  word-spacing: 5px;
-  color: rgb(8 8 8);
-  display: flex;
-  justify-content: center;
+.holder {
   width: 100%;
-  padding-bottom: 0.4rem;
+  position: relative;
+  bottom: 0;
 }
+
 .footer-text {
   font-weight: bold;
   color: #9b9893;

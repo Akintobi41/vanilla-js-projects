@@ -8,7 +8,6 @@ body {
   margin: auto;
   position: relative;
   height: 100vh;
-  /* overflow: hidden; */
 }
 .h1-title {
   font-family: "Dancing Script", cursive;
@@ -94,8 +93,6 @@ header {
   height: 2px;
   background-color: #100f0f;
   position: absolute;
-  /* transform: translateY(-5px);
-  box-shadow: 0 5px 0 #100f0f; */
   transition: all 0.5s;
 }
 .hamburger::after {
