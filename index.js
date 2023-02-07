@@ -57,3 +57,69 @@ const restoreStyles = () => {
     timeText.style.visibility = 'visible';
     gameMenu.style.visibility = 'visible';
 }
+
+// Event Listener 
+const addEvent = (el, eventType, functionName) => el.addEventListener(eventType, functionName),
+    removeEvent = (el, eventType, functionName) => el.removeEventListener(eventType, functionName),
+
+    //Toggle classlist
+    addClass = (el, className) => el.classList.add(className),
+    removeClass = (el, className) => el.classList.remove(className),
+
+    getName = () => {
+        playerName = prompt('Player name:')
+        while (!playerName || !playerName.length || playerName.startsWith(' ')) {
+            playerName = prompt('Player name:')
+        }
+    },
+    changeDefault = () => {
+        table.innerHTML = ''
+        restoreStyles();
+        getName();
+        removeEvent(startBtn, 'click', runTime);
+        addClass(highScores, 'no-high-score')
+    },
+    restoreDefault = () => {
+        removeClass(highScores, 'no-high-score')
+        minValue = 1
+        newTime = 60
+        timeText.textContent = `01:00`
+        addEvent(startBtn, 'click', runTime)  // Start Game
+
+    },
+    updateLocalStorage = (key, value) => {
+        return localStorage.setItem(key, JSON.stringify(value))
+    },
+    resetInterval = (popUpTIme, timer) => {
+        clearInterval(popUpTIme)
+        clearInterval(timer)
+    },
+    appendToArray = () => {
+        playerScores.push({ 'number': index, 'name': playerName, 'score': score });
+        index++;
+    },
+
+    runTime = (e) => {
+        changeDefault();
+        let timer = setInterval(() => {
+            if (!newTime) {
+                restoreDefault();
+                resetInterval(popUp, timer)
+                appendToArray();
+                updateLocalStorage('index', index)
+                updateLocalStorage('playerScores', playerScores)
+                alert(`Your final score is :${score}`)
+                score == 0;
+                return scoreText.textContent = '0';
+            }
+            newTime--;
+            minValue = 0;
+            rndmNum = (() => uniqueRandomValue(moleImg));
+
+            timeText.textContent = `0${minValue}:${addZero(newTime)}`;
+            scoreText.textContent = score;
+        }, 1000);
+        toggleInterval();
+    }
+
+addEvent(startBtn, 'click', runTime);  // Start Game
