@@ -123,3 +123,81 @@ const addEvent = (el, eventType, functionName) => el.addEventListener(eventType,
     }
 
 addEvent(startBtn, 'click', runTime);  // Start Game
+
+const uniqueRandomValue = (range) => {
+    let currentRandomNumber = Math.floor(Math.random() * range.length)
+    while (currentRandomNumber === previousRandomNumber) {
+        currentRandomNumber = Math.floor(Math.random() * range.length)
+    }
+    previousRandomNumber = currentRandomNumber
+    return currentRandomNumber
+}
+
+let newNo,
+    showImg = () => {
+        newNo = rndmNum();   // Save random number to a variable 
+        moleImg[newNo].classList.add('animation')
+        moleImg.forEach((mole) => {
+            mole.addEventListener('click', runScore, { once: true })
+        });
+    },
+    hideImg = () => {
+        moleImg[newNo].classList.remove('animation')
+
+    },
+    toggleInterval = () => {
+        popUp = setInterval(function () {
+            showImg();
+            setTimeout(hideImg, 1300)
+        }, 1500)
+    }
+
+const showHighScores = (e) => {
+    e.preventDefault();
+    [...playerScores].sort((first, second) => {
+        return (first.score < second.score) ? 1 : -1
+    }).filter((item, index) => {
+        if (index <= 4) {
+            return item
+        }
+    }).forEach((item, index) => {
+        item.number = index + 1
+        updateScores(item)
+    })
+    scoreStyles();
+}
+
+const closeScores = (e) => {
+    e.preventDefault();
+    table.innerHTML = '';
+
+    showModal.style.display = 'none';
+    closeModalBtns.style.display = 'none';
+    timeText.style.visibility = 'visible';
+    gameMenu.style.visibility = 'visible';
+    highScores.classList.remove('no-high-score')
+}
+
+highScores.addEventListener('click', showHighScores)
+playAgain.addEventListener('click', runTime)
+closeScore.addEventListener('click', closeScores)
+
+const scoreStyles = () => {
+    showModal.style.display = 'block';
+    closeModalBtns.style.display = 'flex';
+    highScores.classList.add('no-high-score')
+    timeText.style.visibility = 'hidden';
+    gameMenu.style.visibility = 'hidden';
+    if (!playerScores.length) noScore.textContent = 'no mole crushers yet!'
+}
+
+
+//  What next
+// Game levels
+// Preloader
+
+function longestConsec(strarr, k) {
+    // your code
+}
+
+// console.log(longestConsec())
