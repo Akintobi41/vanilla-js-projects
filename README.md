@@ -9,7 +9,7 @@ Getting Started
 To play the game, simply clone or download this repository and open the index.html file in your browser.
 
 <h2>Game Play</h2>
-The objective of the game is to whack as many moles as possible within the time limit. The difficulty level affects the number of moles and the speed at which they appear. The high scores are saved locally in your browser and can be viewed from the main menu.
+The objective of the game is to whack as many moles as possible within the time limit. The difficulty level affects the number of moles and the speed at which they appear. The high scores are saved locally in your browser and can be viewed from the game menu.
 
 <h2>Built With</h2>
 HTML<br>
