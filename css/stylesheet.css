@@ -1,0 +1,191 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+body {
+  max-width: 1500px;
+  margin: auto;
+  padding: 1rem;
+  position: relative;
+  background: #3d1766;
+}
+.rounded {
+  width: 3.5rem;
+  height: 3.5rem;
+  background: url("/images/icons8-hammer-64.png") no-repeat;
+  background-size: cover;
+}
+.pointed {
+  background: url("/images/icons8-hammer-64.png") no-repeat;
+  background-size: cover;
+}
+h2 {
+  text-align: center;
+  margin-bottom: 1rem;
+  font-weight: 900;
+}
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1.5rem 1rem;
+}
+
+.high-scores {
+  text-decoration: none;
+  color: #000;
+  position: relative;
+  letter-spacing: 0.5px;
+  display: unset;
+}
+.high-scores::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 4px;
+  border-radius: 4px;
+  background-color: #cd0404;
+  bottom: -5px;
+  left: 0;
+  transform-origin: right;
+  transform: scaleX(0);
+  transition: transform 0.3s ease-in-out;
+}
+.high-scores:hover::before {
+  transform-origin: left;
+  transform: scaleX(1);
+}
+.no-high-score {
+  display: none;
+}
+.score-section {
+  text-align: center;
+}
+.show-scores {
+  display: none;
+  position: absolute;
+  width: 29rem;
+  height: 25rem;
+  background-color: #fff;
+  box-shadow: 0 0 2px rgb(248, 248, 28);
+  z-index: 1;
+  border-radius: 5px;
+  padding: 1rem;
+}
+
+.close-modal {
+  position: absolute;
+  right: -15px;
+  top: -5px;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: solid 1px rgb(100, 19, 19);
+  font-size: 1.2rem;
+  color: #4b6055;
+}
+.high-score-text {
+  font-size: 2rem;
+  text-align: center;
+  letter-spacing: 3px;
+  font-weight: 700;
+  color: #ff0032;
+  margin-bottom: 1rem;
+}
+.modal-buttons {
+  width: 6rem;
+  height: 2rem;
+}
+.close-modal-section {
+  display: none;
+  justify-content: center;
+}
+.no-score {
+  color: #ff0032;
+}
+.container {
+  width: 24rem;
+  display: grid;
+  grid-template-areas:
+    "mole-1"
+    "mole-2"
+    "mole-3";
+  grid-template-columns: auto auto auto;
+  gap: 4rem 1rem;
+}
+.mole-1,
+.mole-2,
+.mole-3 {
+  height: 3.5rem;
+  margin-top: 2rem;
+  background-color: black;
+  border-radius: 50%;
+  position: relative;
+}
+h3 {
+  text-align: center;
+  font-weight: 900;
+  margin-top: -1.5rem;
+}
+h5 {
+  margin-right: 5rem;
+}
+.game-menu {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+button {
+  cursor: pointer;
+  padding: 0.2rem 1rem;
+  letter-spacing: 1px;
+  font-weight: bold;
+  margin-left: 4rem;
+}
+.mole-img {
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+  background-color: #ff0032;
+  z-index: -1;
+  margin-left: 1rem;
+  visibility: hidden;
+}
+.animation {
+  visibility: visible;
+  animation: elevate 1.5s ease-in-out infinite;
+}
+
+@keyframes elevate {
+  0% {
+    transform: translateY(-20px);
+  }
+  50% {
+    transform: translateY(-90px);
+  }
+  100% {
+    transform: translateY(-10px);
+  }
+}
+table {
+  width: 100%;
+}
+tr {
+  font-size: 2rem;
+  font-weight: bold;
+}
+td {
+  border-bottom: solid 2px #ff0032;
+}
+.number {
+  width: 20%;
+}
+.play-again-button {
+  margin-left: -1rem;
+}
