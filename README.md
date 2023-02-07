@@ -1,14 +1,20 @@
-This project is a web application built using HTML, CSS, and JavaScript that showcases information about the world of Middle-earth from J.R.R. Tolkien's "The Lord of the Rings" trilogy. The application uses the Lord of the Rings API to retrieve data about characters, locations, and events from the books and then stores this information in the local storage for easy access.
+<h1>Whack-a-Mole Game</h1>
+This is a fun and interactive Whack-a-Mole game built with HTML, CSS, and JavaScript. The game allows you to select the difficulty level and keeps track of your high scores.
 
-Features
-Simple homepage with link to other official LOTR articles
-Display a list of characters with their names, races, and descriptions
-Show a catalogue of important books
-Store data in local storage for easy access and improved performance
+<h2>Features</h2>
+Three difficulty levels: Easy, Medium, and Hard
+High score tracking
+Built with HTML, CSS, and JavaScript
+Getting Started
+To play the game, simply clone or download this repository and open the index.html file in your browser.
 
-Technical Details
-The project uses HTML to structure the content and provide a basic layout. CSS is used to style the web page and provide a visually appealing user interface. JavaScript is used to retrieve data from the Lord of the Rings API, store it in the local storage, and dynamically display it on the page. The application makes use of asynchronous JavaScript to ensure that the data is loaded from the API before it is displayed on the page.
-Check it out here on akin-rings.netlify.app
+<h2>Game Play</h2>
+The objective of the game is to whack as many moles as possible within the time limit. The difficulty level affects the number of moles and the speed at which they appear. The high scores are saved locally in your browser and can be viewed from the main menu.
 
-Acknowledgements
-This project makes use of data from the Lord of the Rings API.
+<h2>Built With</h2>
+HTML
+CSS
+JavaScript
+
+<h2>Author</h2>
+[Akintobi Moyinoluwa]

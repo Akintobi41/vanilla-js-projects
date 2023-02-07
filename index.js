@@ -14,10 +14,12 @@ mainBody.style.justifyContent = 'center'
 mainBody.style.alignItems = 'center';
 
 setTimeout(() => {
-    body.forEach((item) => item.style.display = '')
+    // body.forEach((item) => item.style.display = '')
     loader.style.display = 'none'
     mainBody.style.display = 'block'
 }, 3000);
+
+
 
 
 const getEl = ((el) => document.querySelector(el)),
