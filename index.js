@@ -1,3 +1,25 @@
+const mainBody = document.querySelector('body'),
+    loader = document.querySelector('.loader'),
+    body = [...document.querySelector('body').children];
+// Remove last two elements from body array
+body.splice(-2, 2);
+// Remove first element from body array
+body.splice(0, 1);
+
+body.forEach((item) => item.style.display = 'none')
+
+mainBody.style.minHeight = '100vh'
+mainBody.style.display = 'flex'
+mainBody.style.justifyContent = 'center'
+mainBody.style.alignItems = 'center';
+
+setTimeout(() => {
+    body.forEach((item) => item.style.display = '')
+    loader.style.display = 'none'
+    mainBody.style.display = 'block'
+}, 3000);
+
+
 const getEl = ((el) => document.querySelector(el)),
     main = getEl('body'),
     timeText = getEl('h3'),
@@ -33,9 +55,9 @@ const addZero = ((x) => (x < 10) ? `0${String(x)}` : String(x)),
 
     updateScores = (score) => {
         let tr = document.createElement('tr'),
-            td1 = document.createElement('td')
-        td2 = document.createElement('td')
-        td3 = document.createElement('td')
+            td1 = document.createElement('td'),
+            td2 = document.createElement('td'),
+            td3 = document.createElement('td')
 
         td1.textContent = addZero(score.number)
         td2.textContent = score.name
