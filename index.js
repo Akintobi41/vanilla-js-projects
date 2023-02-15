@@ -1,12 +1,18 @@
-const mainBody = document.querySelector('body'),
+const continueGameBtn = document.getElementById("continue-game-button"),
+    difficultySelect = document.getElementById("difficulty-select"),
+    mainBody = document.querySelector('body'),
     loader = document.querySelector('.loader'),
-    body = [...document.querySelector('body').children];
+    body = [...document.querySelector('body').children],
+    difficultySection = document.querySelector('#difficulty-section');
+
 // Remove last two elements from body array
 body.splice(-2, 2);
 // Remove first element from body array
-body.splice(0, 1);
+body.splice(0, 2);
 
 body.forEach((item) => item.style.display = 'none')
+// Hide Difficulty section
+difficultySection.style.display = 'none';
 
 mainBody.style.minHeight = '100vh'
 mainBody.style.display = 'flex'
@@ -14,13 +20,21 @@ mainBody.style.justifyContent = 'center'
 mainBody.style.alignItems = 'center';
 
 setTimeout(() => {
-    // body.forEach((item) => item.style.display = '')
     loader.style.display = 'none'
-    mainBody.style.display = 'block'
+    mainBody.style.display = 'flex'
+    difficultySection.style.display = '';
 }, 3000);
 
+setTimeout(() => {
+    difficultySection.classList.add("show");
+}, 3200);
 
-
+const gameMode = () => {
+    difficultySection.style.display = 'none'
+    mainBody.style.display = 'block'
+    body.forEach((item) => item.style.display = '')
+}
+continueGameBtn.addEventListener('click', gameMode)
 
 const getEl = ((el) => document.querySelector(el)),
     main = getEl('body'),
@@ -49,8 +63,8 @@ let score = 0,
 
 const addZero = ((x) => (x < 10) ? `0${String(x)}` : String(x)),
     runScore = (e) => {
-        e.target.removeEventListener('click', runScore)
         score++;
+        e.target.removeEventListener('click', runScore)
     },
     playerScores = JSON.parse(localStorage.getItem('playerScores')) || [],
     cl_ = ['number', 'name', 'score'],
@@ -109,7 +123,6 @@ const addEvent = (el, eventType, functionName) => el.addEventListener(eventType,
         newTime = 60
         timeText.textContent = `01:00`
         addEvent(startBtn, 'click', runTime)  // Start Game
-
     },
     updateLocalStorage = (key, value) => {
         return localStorage.setItem(key, JSON.stringify(value))
@@ -133,7 +146,7 @@ const addEvent = (el, eventType, functionName) => el.addEventListener(eventType,
                 updateLocalStorage('index', index)
                 updateLocalStorage('playerScores', playerScores)
                 alert(`Your final score is :${score}`)
-                score == 0;
+                score = 0;
                 return scoreText.textContent = '0';
             }
             newTime--;
@@ -157,37 +170,62 @@ const uniqueRandomValue = (range) => {
     return currentRandomNumber
 }
 
+// Animation duration based on difficulty
+const difficulty = {
+    easy: [1600, 1300],
+    medium: [1500, 1200],
+    hard: [1400, 1100]
+};
+
+switch (difficultySelect.value) {
+    case 'easy':
+        [time1, time2] = difficulty.easy;
+        range = 1.3;
+        break;
+    case 'medium':
+        [time1, time2] = difficulty.medium;
+        range = 1.2;
+        break;
+    default:
+        [time1, time2] = difficulty.hard;
+        range = 1.2;
+        break;
+}
+
+
 let newNo,
     showImg = () => {
         newNo = rndmNum();   // Save random number to a variable 
         moleImg[newNo].classList.add('animation')
-        moleImg.forEach((mole) => {
-            mole.addEventListener('click', runScore, { once: true })
-        });
+        moleImg[newNo].style.animation = `elevate ${range}s ease-in-out`
     },
     hideImg = () => {
         moleImg[newNo].classList.remove('animation')
-
+        moleImg[newNo].style.animation = ''
     },
     toggleInterval = () => {
         popUp = setInterval(function () {
             showImg();
-            setTimeout(hideImg, 1300)
-        }, 1500)
+            setTimeout(hideImg, time2)
+            moleImg.forEach((mole) => {
+                mole.addEventListener('click', runScore, { once: true })
+            });
+        }, time1)
+        console.log(time1, 'time1')
+        console.log(time2, 'time2')
+        console.log(range, 'range')
     }
 
 const showHighScores = (e) => {
     e.preventDefault();
-    [...playerScores].sort((first, second) => {
-        return (first.score < second.score) ? 1 : -1
-    }).filter((item, index) => {
-        if (index <= 4) {
-            return item
-        }
-    }).forEach((item, index) => {
-        item.number = index + 1
-        updateScores(item)
-    })
+    [...playerScores]
+        .sort((first, second) => (first.score < second.score) ? 1 : -1)
+        .filter((_, index) => index <= 4)
+        .forEach((item, index) => {
+            item.number = index + 1;
+            updateScores(item);
+        });
+
     scoreStyles();
 }
 
@@ -201,10 +239,11 @@ const closeScores = (e) => {
     gameMenu.style.visibility = 'visible';
     highScores.classList.remove('no-high-score')
 }
-
-highScores.addEventListener('click', showHighScores)
-playAgain.addEventListener('click', runTime)
-closeScore.addEventListener('click', closeScores)
+const currentEvents = () => {
+    highScores.addEventListener('click', showHighScores)
+    playAgain.addEventListener('click', runTime)
+    closeScore.addEventListener('click', closeScores)
+}
 
 const scoreStyles = () => {
     showModal.style.display = 'block';
@@ -212,16 +251,7 @@ const scoreStyles = () => {
     highScores.classList.add('no-high-score')
     timeText.style.visibility = 'hidden';
     gameMenu.style.visibility = 'hidden';
-    if (!playerScores.length) noScore.textContent = 'no mole crushers yet!'
+    return (!playerScores.length) ? noScore.textContent = 'no mole crushers yet!' : noScore.textContent = ''
 }
 
-
-//  What next
-// Game levels
-// Preloader
-
-function longestConsec(strarr, k) {
-    // your code
-}
-
-// console.log(longestConsec())
+currentEvents();

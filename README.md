@@ -5,7 +5,7 @@ This is a fun and interactive Whack-a-Mole game built with HTML, CSS, and JavaSc
 Three difficulty levels: Easy, Medium, and Hard
 High score tracking
 Built with HTML, CSS, and JavaScript
-Getting Started
+<h2>Getting Started</h2>
 To play the game, simply clone or download this repository and open the index.html file in your browser.
 
 <h2>Game Play</h2>

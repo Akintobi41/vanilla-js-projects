@@ -111,19 +111,37 @@ body {
   right: 90px;
   animation-delay: 0.1s;
 }
-.rounded {
-  width: 3.5rem;
-  height: 3.5rem;
-  background: url("/images/icons8-hammer-64.png") no-repeat;
-  background-size: cover;
+#difficulty-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  opacity: 0;
+  transform: translateX(-100%);
+  transition: opacity 2.5s ease-out, transform 0.5s ease-out;
 }
-.pointed {
-  background: url("/images/icons8-hammer-64.png") no-repeat;
-  background-size: cover;
+
+#difficulty-select {
+  margin-top: 10px;
+  padding: 5px;
+  font-size: 16px;
+  transition: all 2.5s ease-out;
 }
-.hideDisplay {
-  display: none;
+
+#start-game-button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: blue;
+  color: white;
+  border: none;
+  transition: all 2.5s ease-out;
 }
+
+#difficulty-section.show {
+  opacity: 1;
+  transform: translateX(0);
+}
+
 h2 {
   text-align: center;
   margin-bottom: 1rem;
@@ -249,20 +267,24 @@ button {
   padding: 0.2rem 1rem;
   letter-spacing: 1px;
   font-weight: bold;
-  margin-left: 4rem;
+  margin: 0.5rem 0 0 4rem;
 }
 .mole-img {
   width: 5rem;
   height: 5rem;
   border-radius: 50%;
-  background-color: #ff0032;
+  background: url("/mole.png") no-repeat;
+  background-size: cover;
+  background-position: center;
   z-index: -1;
   margin-left: 1rem;
   visibility: hidden;
 }
 .animation {
   visibility: visible;
-  animation: elevate 1.5s ease-in-out infinite;
+  /* animation: elevate 1.3s ease-in-out; */
+  /* infinite
+   */
 }
 
 @keyframes elevate {
@@ -273,7 +295,7 @@ button {
     transform: translateY(-90px);
   }
   100% {
-    transform: translateY(-10px);
+    transform: translateY(-20px);
   }
 }
 table {
