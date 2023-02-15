@@ -282,9 +282,6 @@ button {
 }
 .animation {
   visibility: visible;
-  /* animation: elevate 1.3s ease-in-out; */
-  /* infinite
-   */
 }
 
 @keyframes elevate {
