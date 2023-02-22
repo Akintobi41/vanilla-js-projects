@@ -13,12 +13,13 @@ body.splice(0, 2);
 body.forEach((item) => item.style.display = 'none')
 // Hide Difficulty section
 difficultySection.style.display = 'none';
-
+// Body styles reset
 mainBody.style.minHeight = '100vh'
 mainBody.style.display = 'flex'
 mainBody.style.justifyContent = 'center'
 mainBody.style.alignItems = 'center';
 
+//PreLoader
 setTimeout(() => {
     loader.style.display = 'none'
     mainBody.style.display = 'flex'
@@ -27,7 +28,7 @@ setTimeout(() => {
 
 setTimeout(() => {
     difficultySection.classList.add("show");
-}, 3200);
+}, 3050);
 
 const gameMode = () => {
     difficultySection.style.display = 'none'
@@ -46,6 +47,7 @@ const getEl = ((el) => document.querySelector(el)),
     showModal = getEl('.show-scores'),
     gameMenu = getEl('.game-menu'),
     noScore = getEl('.no-score'),
+    container = getEl('.container'),
     closeModalBtns = getEl('.close-modal-section'),
     table = getEl('tbody'),
     playAgain = getEl('.play-again-button'),
@@ -94,6 +96,7 @@ const restoreStyles = () => {
     closeModalBtns.style.display = 'none';
     timeText.style.visibility = 'visible';
     gameMenu.style.visibility = 'visible';
+    container.style.visibility = 'visible'
 }
 
 // Event Listener 
@@ -135,7 +138,6 @@ const addEvent = (el, eventType, functionName) => el.addEventListener(eventType,
         playerScores.push({ 'number': index, 'name': playerName, 'score': score });
         index++;
     },
-
     runTime = (e) => {
         changeDefault();
         let timer = setInterval(() => {
@@ -161,6 +163,7 @@ const addEvent = (el, eventType, functionName) => el.addEventListener(eventType,
 
 addEvent(startBtn, 'click', runTime);  // Start Game
 
+// Stop random number from repeating itself
 const uniqueRandomValue = (range) => {
     let currentRandomNumber = Math.floor(Math.random() * range.length)
     while (currentRandomNumber === previousRandomNumber) {
@@ -177,6 +180,7 @@ const difficulty = {
     hard: [1400, 1100]
 };
 
+
 switch (difficultySelect.value) {
     case 'easy':
         [time1, time2] = difficulty.easy;
@@ -191,7 +195,6 @@ switch (difficultySelect.value) {
         range = 1.2;
         break;
 }
-
 
 let newNo,
     showImg = () => {
@@ -211,9 +214,6 @@ let newNo,
                 mole.addEventListener('click', runScore, { once: true })
             });
         }, time1)
-        console.log(time1, 'time1')
-        console.log(time2, 'time2')
-        console.log(range, 'range')
     }
 
 const showHighScores = (e) => {
@@ -225,7 +225,6 @@ const showHighScores = (e) => {
             item.number = index + 1;
             updateScores(item);
         });
-
     scoreStyles();
 }
 
@@ -237,6 +236,7 @@ const closeScores = (e) => {
     closeModalBtns.style.display = 'none';
     timeText.style.visibility = 'visible';
     gameMenu.style.visibility = 'visible';
+    container.style.visibility = 'visible';
     highScores.classList.remove('no-high-score')
 }
 const currentEvents = () => {
@@ -251,7 +251,8 @@ const scoreStyles = () => {
     highScores.classList.add('no-high-score')
     timeText.style.visibility = 'hidden';
     gameMenu.style.visibility = 'hidden';
+    container.style.visibility = 'hidden'
     return (!playerScores.length) ? noScore.textContent = 'no mole crushers yet!' : noScore.textContent = ''
 }
-
 currentEvents();
+
