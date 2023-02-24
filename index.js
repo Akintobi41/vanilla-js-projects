@@ -7,7 +7,7 @@ const continueGameBtn = document.getElementById("continue-game-button"),
 
 // Remove last two elements from body array
 body.splice(-2, 2);
-// Remove first element from body array
+// Remove first two elements from body array
 body.splice(0, 2);
 
 body.forEach((item) => item.style.display = 'none')
@@ -94,9 +94,11 @@ const addZero = ((x) => (x < 10) ? `0${String(x)}` : String(x)),
 const restoreStyles = () => {
     showModal.style.display = 'none';
     closeModalBtns.style.display = 'none';
-    timeText.style.visibility = 'visible';
-    gameMenu.style.visibility = 'visible';
-    container.style.visibility = 'visible'
+    [container, gameMenu, timeText].forEach((element) => element.style.visibility = 'visible')
+
+    // timeText.style.visibility = 'visible';
+    // gameMenu.style.visibility = 'visible';
+    // container.style.visibility = 'visible'
 }
 
 // Event Listener 
@@ -234,9 +236,7 @@ const closeScores = (e) => {
 
     showModal.style.display = 'none';
     closeModalBtns.style.display = 'none';
-    timeText.style.visibility = 'visible';
-    gameMenu.style.visibility = 'visible';
-    container.style.visibility = 'visible';
+    [container, gameMenu, timeText].forEach((element) => element.style.visibility = 'visible')
     highScores.classList.remove('no-high-score')
 }
 const currentEvents = () => {
@@ -248,10 +248,9 @@ const currentEvents = () => {
 const scoreStyles = () => {
     showModal.style.display = 'block';
     closeModalBtns.style.display = 'flex';
-    highScores.classList.add('no-high-score')
-    timeText.style.visibility = 'hidden';
-    gameMenu.style.visibility = 'hidden';
-    container.style.visibility = 'hidden'
+    highScores.classList.add('no-high-score');
+    [container, gameMenu, timeText].forEach((element) => element.style.visibility = 'hidden')
+
     return (!playerScores.length) ? noScore.textContent = 'no mole crushers yet!' : noScore.textContent = ''
 }
 currentEvents();
