@@ -21,8 +21,6 @@ body {
 .loader span {
   position: absolute;
   display: block;
-  /* border: solid 1px #fff; */
-  /* box-shadow: 0 5px 0 #ccc, inset 0 5px #ccc; */
   box-sizing: border-box;
   border-radius: 50%;
   animation: animate 2s cubic-bezier(0.4, 0, 1, 1) infinite;
@@ -280,7 +278,6 @@ button {
 .animation {
   visibility: visible;
 }
-
 @keyframes elevate {
   0% {
     transform: translateY(-20px);

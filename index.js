@@ -1,44 +1,49 @@
-const continueGameBtn = document.getElementById("continue-game-button"),
-    difficultySelect = document.getElementById("difficulty-select"),
-    mainBody = document.querySelector('body'),
-    loader = document.querySelector('.loader'),
-    body = [...document.querySelector('body').children],
-    difficultySection = document.querySelector('#difficulty-section');
-
-// Remove last two elements from body array
+const getEl = ((el) => document.querySelector(el));
+// Event Listener 
+const addEvent = (el, eventType, functionName) => el.addEventListener(eventType, functionName),
+    removeEvent = (el, eventType, functionName) => el.removeEventListener(eventType, functionName),
+    //Toggle classlist
+    addClass = (el, className) => el.classList.add(className),
+    removeClass = (el, className) => el.classList.remove(className),
+    continueGameBtn = getEl("#continue-game-button"),
+    difficultySelect = getEl("#difficulty-select"),
+    mainBody = getEl('body'),
+    loader = getEl('.loader'),
+    body = [...getEl('body').children],
+    difficultySection = getEl('#difficulty-section'),
+    toggleDisplay = (el, displayValue) => {
+        el.style.display = displayValue
+    }
+// remove elements that are not needed initially and hide remaining elements
 body.splice(-2, 2);
-// Remove first two elements from body array
 body.splice(0, 2);
-
-body.forEach((item) => item.style.display = 'none')
+body.forEach((item) => toggleDisplay(item, 'none'))
 // Hide Difficulty section
-difficultySection.style.display = 'none';
+toggleDisplay(difficultySection, 'none');
 // Body styles reset
+toggleDisplay(mainBody, 'flex');
 mainBody.style.minHeight = '100vh'
-mainBody.style.display = 'flex'
 mainBody.style.justifyContent = 'center'
 mainBody.style.alignItems = 'center';
-
 //PreLoader
 setTimeout(() => {
-    loader.style.display = 'none'
-    mainBody.style.display = 'flex'
-    difficultySection.style.display = '';
+    toggleDisplay(loader, 'none')
+    toggleDisplay(mainBody, 'flex')
+    toggleDisplay(difficultySection, '')
 }, 3000);
 
 setTimeout(() => {
-    difficultySection.classList.add("show");
+    addClass(difficultySection, 'show')
 }, 3050);
 
 const gameMode = () => {
-    difficultySection.style.display = 'none'
-    mainBody.style.display = 'block'
-    body.forEach((item) => item.style.display = '')
+    toggleDisplay(difficultySection, 'none')
+    toggleDisplay(mainBody, 'block')
+    body.forEach((item) => toggleDisplay(item, ''))
 }
-continueGameBtn.addEventListener('click', gameMode)
+addEvent(continueGameBtn, 'click', gameMode);
 
-const getEl = ((el) => document.querySelector(el)),
-    main = getEl('body'),
+const main = getEl('body'),
     timeText = getEl('h3'),
     startBtn = getEl('.start-button'),
     scoreText = getEl('strong'),
@@ -66,7 +71,7 @@ let score = 0,
 const addZero = ((x) => (x < 10) ? `0${String(x)}` : String(x)),
     runScore = (e) => {
         score++;
-        e.target.removeEventListener('click', runScore)
+        removeEvent(e.target, 'click', runScore)
     },
     playerScores = JSON.parse(localStorage.getItem('playerScores')) || [],
     cl_ = ['number', 'name', 'score'],
@@ -81,10 +86,9 @@ const addZero = ((x) => (x < 10) ? `0${String(x)}` : String(x)),
         td2.textContent = score.name
         td3.textContent = score.score * 10
 
-        td1.classList.add(cl_[0])
-        td2.classList.add(cl_[1])
-        td3.classList.add(cl_[2])
-
+        addClass(td1, cl_[0])
+        addClass(td2, cl_[1])
+        addClass(td3, cl_[2])
         tr.appendChild(td1)
         tr.appendChild(td2)
         tr.appendChild(td3)
@@ -92,22 +96,10 @@ const addZero = ((x) => (x < 10) ? `0${String(x)}` : String(x)),
     }
 
 const restoreStyles = () => {
-    showModal.style.display = 'none';
-    closeModalBtns.style.display = 'none';
+    toggleDisplay(showModal, 'none');
+    toggleDisplay(closeModalBtns, 'none');
     [container, gameMenu, timeText].forEach((element) => element.style.visibility = 'visible')
-
-    // timeText.style.visibility = 'visible';
-    // gameMenu.style.visibility = 'visible';
-    // container.style.visibility = 'visible'
-}
-
-// Event Listener 
-const addEvent = (el, eventType, functionName) => el.addEventListener(eventType, functionName),
-    removeEvent = (el, eventType, functionName) => el.removeEventListener(eventType, functionName),
-
-    //Toggle classlist
-    addClass = (el, className) => el.classList.add(className),
-    removeClass = (el, className) => el.classList.remove(className),
+},
 
     getName = () => {
         playerName = prompt('Player name:')
@@ -129,9 +121,7 @@ const addEvent = (el, eventType, functionName) => el.addEventListener(eventType,
         timeText.textContent = `01:00`
         addEvent(startBtn, 'click', runTime)  // Start Game
     },
-    updateLocalStorage = (key, value) => {
-        return localStorage.setItem(key, JSON.stringify(value))
-    },
+    updateLocalStorage = (key, value) => localStorage.setItem(key, JSON.stringify(value)),
     resetInterval = (popUpTIme, timer) => {
         clearInterval(popUpTIme)
         clearInterval(timer)
@@ -162,9 +152,7 @@ const addEvent = (el, eventType, functionName) => el.addEventListener(eventType,
         }, 1000);
         toggleInterval();
     }
-
 addEvent(startBtn, 'click', runTime);  // Start Game
-
 // Stop random number from repeating itself
 const uniqueRandomValue = (range) => {
     let currentRandomNumber = Math.floor(Math.random() * range.length)
@@ -174,15 +162,12 @@ const uniqueRandomValue = (range) => {
     previousRandomNumber = currentRandomNumber
     return currentRandomNumber
 }
-
 // Animation duration based on difficulty
 const difficulty = {
     easy: [1600, 1300],
     medium: [1500, 1200],
     hard: [1400, 1100]
 };
-
-
 switch (difficultySelect.value) {
     case 'easy':
         [time1, time2] = difficulty.easy;
@@ -201,17 +186,17 @@ switch (difficultySelect.value) {
 let newNo,
     showImg = () => {
         newNo = rndmNum();   // Save random number to a variable 
-        moleImg[newNo].classList.add('animation')
-        moleImg[newNo].style.animation = `elevate ${range}s ease-in-out`
+        addClass(moleImg[newNo], 'animation')
+        moleImg[newNo].g.animation = `elevate ${range}s ease-in-out`
     },
     hideImg = () => {
-        moleImg[newNo].classList.remove('animation')
+        removeClass(moleImg[newNo], 'animation')
         moleImg[newNo].style.animation = ''
     },
     toggleInterval = () => {
         popUp = setInterval(function () {
             showImg();
-            setTimeout(hideImg, time2)
+            setTimeout(hideImg, time2);
             moleImg.forEach((mole) => {
                 mole.addEventListener('click', runScore, { once: true })
             });
@@ -228,30 +213,27 @@ const showHighScores = (e) => {
             updateScores(item);
         });
     scoreStyles();
-}
+},
+    closeScores = (e) => {
+        e.preventDefault();
+        table.innerHTML = '';
 
-const closeScores = (e) => {
-    e.preventDefault();
-    table.innerHTML = '';
-
-    showModal.style.display = 'none';
-    closeModalBtns.style.display = 'none';
-    [container, gameMenu, timeText].forEach((element) => element.style.visibility = 'visible')
-    highScores.classList.remove('no-high-score')
-}
-const currentEvents = () => {
-    highScores.addEventListener('click', showHighScores)
-    playAgain.addEventListener('click', runTime)
-    closeScore.addEventListener('click', closeScores)
-}
-
-const scoreStyles = () => {
-    showModal.style.display = 'block';
-    closeModalBtns.style.display = 'flex';
-    highScores.classList.add('no-high-score');
-    [container, gameMenu, timeText].forEach((element) => element.style.visibility = 'hidden')
-
-    return (!playerScores.length) ? noScore.textContent = 'no mole crushers yet!' : noScore.textContent = ''
-}
+        toggleDisplay(showModal, 'none');
+        toggleDisplay(closeModalBtns, 'none');
+        [container, gameMenu, timeText].forEach((element) => element.style.visibility = 'visible')
+        highScores.classList.remove('no-high-score')
+    },
+    currentEvents = () => {
+        highScores.addEventListener('click', showHighScores)
+        playAgain.addEventListener('click', runTime)
+        closeScore.addEventListener('click', closeScores)
+    },
+    scoreStyles = () => {
+        toggleDisplay(showModal, 'block')
+        toggleDisplay(closeModalBtns, 'flex')
+        highScores.classList.add('no-high-score');
+        [container, gameMenu, timeText].forEach((element) => element.style.visibility = 'hidden')
+        return (!playerScores.length) ? noScore.textContent = 'no mole crushers yet!' : noScore.textContent = ''
+    }
 currentEvents();
 
