@@ -30,11 +30,10 @@ setTimeout(() => {
     toggleDisplay(loader, 'none')
     toggleDisplay(mainBody, 'flex')
     toggleDisplay(difficultySection, '')
-}, 3000);
-
-setTimeout(() => {
-    addClass(difficultySection, 'show')
-}, 3050);
+}, 3000),
+    setTimeout(() => {
+        addClass(difficultySection, 'show')
+    }, 3050);
 
 const gameMode = () => {
     toggleDisplay(difficultySection, 'none')
@@ -146,7 +145,6 @@ const restoreStyles = () => {
             newTime--;
             minValue = 0;
             rndmNum = (() => uniqueRandomValue(moleImg));
-
             timeText.textContent = `0${minValue}:${addZero(newTime)}`;
             scoreText.textContent = score;
         }, 1000);
@@ -187,7 +185,7 @@ let newNo,
     showImg = () => {
         newNo = rndmNum();   // Save random number to a variable 
         addClass(moleImg[newNo], 'animation')
-        moleImg[newNo].g.animation = `elevate ${range}s ease-in-out`
+        moleImg[newNo].style.animation = `elevate ${range}s ease-in-out`
     },
     hideImg = () => {
         removeClass(moleImg[newNo], 'animation')
@@ -221,17 +219,17 @@ const showHighScores = (e) => {
         toggleDisplay(showModal, 'none');
         toggleDisplay(closeModalBtns, 'none');
         [container, gameMenu, timeText].forEach((element) => element.style.visibility = 'visible')
-        highScores.classList.remove('no-high-score')
+        removeClass(highScores, 'no-high-score')
     },
     currentEvents = () => {
-        highScores.addEventListener('click', showHighScores)
-        playAgain.addEventListener('click', runTime)
-        closeScore.addEventListener('click', closeScores)
+        addEvent(highScores, 'click', showHighScores)
+        addEvent(playAgain, 'click', runTime)
+        addEvent(closeScore, 'click', closeScores)
     },
     scoreStyles = () => {
         toggleDisplay(showModal, 'block')
-        toggleDisplay(closeModalBtns, 'flex')
-        highScores.classList.add('no-high-score');
+        toggleDisplay(closeModalBtns, 'flex');
+        addClass(highScores, 'no-high-score');
         [container, gameMenu, timeText].forEach((element) => element.style.visibility = 'hidden')
         return (!playerScores.length) ? noScore.textContent = 'no mole crushers yet!' : noScore.textContent = ''
     }
