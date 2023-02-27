@@ -236,16 +236,17 @@ h2 {
     "mole-2"
     "mole-3";
   grid-template-columns: auto auto auto;
-  gap: 4rem 1rem;
+  gap: 5rem 1rem;
+  margin-top: 1rem;
 }
 .mole-1,
 .mole-2,
 .mole-3 {
   height: 5.5rem;
-  margin-top: 1rem;
   background-color: black;
   position: relative;
 }
+
 h3 {
   text-align: center;
   font-weight: 900;
@@ -285,11 +286,6 @@ button {
   }
   5% {
     visibility: visible;
-  }
-  10% {
-    visibility: visible;
-  }
-  20% {
   }
   50% {
     transform: translateY(-80px);

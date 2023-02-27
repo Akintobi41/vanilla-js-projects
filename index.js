@@ -40,6 +40,7 @@ const gameMode = () => {
     toggleDisplay(mainBody, 'block')
     body.forEach((item) => toggleDisplay(item, ''))
 }
+
 addEvent(continueGameBtn, 'click', gameMode);
 
 const main = getEl('body'),
@@ -166,6 +167,7 @@ const difficulty = {
     medium: [1500, 1200],
     hard: [1400, 1100]
 };
+
 switch (difficultySelect.value) {
     case 'easy':
         [time1, time2] = difficulty.easy;
