@@ -25,6 +25,7 @@
   padding: 0.5rem 1rem;
   letter-spacing: 0.3px;
 }
+
 .h1-titles {
   font-family: "Dancing Script", cursive;
   font-size: 2.5rem;
@@ -38,6 +39,7 @@
   font-size: 0.8rem;
   letter-spacing: 0.3px;
 }
+
 .content-search {
   padding: 0 0.5rem;
   font-size: 0.8rem;
@@ -47,14 +49,17 @@
   outline: none;
   max-width: 500px;
 }
+
 .content-search:active,
 .content-search:focus {
   border: none;
   box-shadow: 0 0 2px #f15412;
 }
+
 ::placeholder {
   font-size: 0.65rem;
 }
+
 .pagination {
   display: flex;
   justify-content: center;
@@ -72,6 +77,7 @@ footer {
   width: 100%;
   margin-bottom: -0.5rem;
 }
+
 .pagination button {
   width: 2.3rem;
   height: 2rem;
@@ -85,6 +91,7 @@ footer {
   border: solid 1px #9b9b9b;
   border-radius: 3px;
 }
+
 .pagination span {
   align-self: center;
   margin-left: 0.2rem;
@@ -93,9 +100,11 @@ footer {
   margin-right: -0.5rem;
   color: hsl(0deg 1% 43%);
 }
+
 .pagination .max-content {
   margin-right: 1rem;
 }
+
 .character-section {
   display: flex;
   flex-direction: column;
@@ -103,6 +112,7 @@ footer {
   align-items: center;
   padding: 1rem;
 }
+
 .character-section-items {
   position: relative;
   display: flex;
@@ -114,9 +124,11 @@ footer {
   max-width: 900px;
   width: 100%;
 }
+
 .character-section-items:hover {
   background-color: rgb(255 255 255 / 32%);
 }
+
 .character-section-header {
   display: flex;
   flex-direction: row-reverse;
@@ -125,38 +137,42 @@ footer {
   border-bottom: none;
   margin-bottom: 1rem;
 }
+
 .gender-image {
   width: 2rem;
   height: 2rem;
-  filter: invert(84%) sepia(27%) saturate(2812%)
-    hue-rotate(359deg) brightness(104%) contrast(101%);
-  background-color: invert(84%) sepia(27%) saturate(2812%)
-    hue-rotate(359deg) brightness(104%) contrast(101%);
+  filter: invert(84%) sepia(27%) saturate(2812%) hue-rotate(359deg) brightness(104%) contrast(101%);
+  background-color: invert(84%) sepia(27%) saturate(2812%) hue-rotate(359deg) brightness(104%) contrast(101%);
   margin-right: 0.3rem;
 }
+
 .female {
-  filter: invert(44%) sepia(67%) saturate(1082%)
-    hue-rotate(347deg) brightness(94%) contrast(91%);
+  filter: invert(44%) sepia(67%) saturate(1082%) hue-rotate(347deg) brightness(94%) contrast(91%);
 }
+
 .unknown {
   width: 1.4rem;
   height: 1.4rem;
   filter: none;
 }
+
 .character-name {
   font-size: 1.2em;
 }
+
 .character-name a {
   text-decoration: none;
   padding-bottom: 0.2rem;
   color: #000;
   letter-spacing: 1px;
 }
+
 .character-name a:hover {
   color: #0a0a0a;
   border-bottom: solid 1px #5c5454;
   transition: color 1s;
 }
+
 .birth-text,
 .gender-text,
 .race-text,
@@ -171,6 +187,7 @@ footer {
   letter-spacing: 1px;
   margin-top: 0.01rem;
 }
+
 .view-more-text {
   display: none;
   position: absolute;
@@ -183,48 +200,59 @@ footer {
   cursor: pointer;
   transform: translate(0px, -55px);
 }
+
 .hair-text,
 .realm-text {
   display: none;
 }
+
 .pagination .min-content,
 .pagination .max-content {
   background-color: rgb(255 255 255 / 61%);
 }
+
 .header-section {
   display: flex;
   align-items: center;
 }
+
 .btn-section {
   border: none;
   background: transparent;
 }
+
 .btn-section.active .star-img {
-  filter: invert(27%) sepia(63%) saturate(2858%)
-    hue-rotate(23deg) brightness(100%) contrast(98%);
+  filter: invert(27%) sepia(63%) saturate(2858%) hue-rotate(23deg) brightness(100%) contrast(98%);
 }
+
 .more-info {
   opacity: 0;
 }
+
 .pagination .previous {
   background-color: rgb(255 255 255 / 90%);
   cursor: pointer;
 }
+
 .pagination .previous-button {
   background: rgb(255 255 255 / 61%);
   cursor: not-allowed;
 }
+
 .next {
   cursor: pointer;
 }
+
 .pagination .next-button {
   background: rgb(255 255 255 / 61%);
   cursor: not-allowed;
 }
+
 .filter-section {
   display: flex;
   padding: 0 1rem;
 }
+
 .filter-section p {
   letter-spacing: 1px;
   font-weight: 500;
@@ -244,15 +272,18 @@ footer {
   appearance: none;
   cursor: pointer;
 }
+
 .navigation select:hover {
   color: #f15412;
   opacity: 0.5;
 }
+
 .navigation select:active,
 .navigation select:focus {
   color: #ca886c;
   opacity: 0.8;
 }
+
 .navigation select option {
   background-color: transparent;
   outline: none;
@@ -276,9 +307,11 @@ option a {
   font-size: 1.2rem;
   color: green;
 }
+
 select::-ms-expand {
   display: none;
 }
+
 .not-found {
   font-size: 0.9rem;
   color: #000;
@@ -291,25 +324,32 @@ select::-ms-expand {
   letter-spacing: 1px;
   color: #100f0f;
 }
+
 .gender {
   width: 3rem;
 }
+
 .gender-type {
   width: 4rem;
 }
+
 .gender-option {
   width: 5rem;
 }
-#gender-select > option {
+
+#gender-select>option {
   width: 50px;
 }
+
 #gender-select:focus,
 #gender-select:active {
   outline: none;
 }
+
 .gender-option {
   width: 5rem;
 }
+
 .holder {
   width: 100%;
   position: relative;
@@ -318,8 +358,9 @@ select::-ms-expand {
 
 .footer-text {
   font-weight: bold;
-  color: #9b9893;
+  color: #eeeded;
 }
+
 .favorite-text {
   font-size: 1.5rem;
   font-weight: bold;
@@ -331,17 +372,21 @@ select::-ms-expand {
     bottom: 0;
   }
 }
+
 @media screen and (min-width: 768px) {
   .h1-titles {
     font-size: 4.5rem;
   }
+
   .navigation ul {
     align-items: center;
   }
+
   .navigation select {
     font-size: 1.2rem;
     color: #100f0f;
   }
+
   .not-found {
     font-size: 2rem;
     text-shadow: 0 0 1px #f15412;

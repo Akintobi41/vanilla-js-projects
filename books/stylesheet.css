@@ -3,12 +3,15 @@
   height: auto;
   overflow: hidden;
 }
+
 header {
   margin-bottom: 3rem;
 }
+
 .book-link {
   opacity: 0.4;
 }
+
 .book-catalogue {
   display: flex;
   flex-wrap: wrap;
@@ -16,6 +19,7 @@ header {
   align-items: center;
   padding: 1rem 0.5rem;
 }
+
 .book-1,
 .book-2,
 .book-3 {
@@ -24,21 +28,25 @@ header {
   margin-top: 1rem;
   background-color: red;
 }
+
 .extras {
-  /* flex-basis: 80%; */
   padding: 1rem;
-  border-top: solid 1px rgb(128 128 128 / 30%);
+  color: #EEEDED;
+  border-top: solid 0.001px lab(93.83 0.36 0.12 / .3);
 }
+
 .wrapper {
   display: flex;
 }
+
 .footer-links {
   display: none;
   align-self: center;
   max-width: 25rem;
 }
+
 .footer-links a {
-  color: #000;
+  color: #EEEDED;
   text-decoration: none;
   margin-left: 0.5rem;
   margin-top: 1.5rem;
@@ -49,10 +57,12 @@ header {
   letter-spacing: 2px;
   font-weight: 700;
 }
+
 .footer-links a:hover {
   text-decoration: underline;
   color: rgb(194, 185, 185);
 }
+
 .view-more {
   text-decoration: none;
   color: #000;
@@ -60,10 +70,12 @@ header {
   border: solid 1px orange;
   padding: 1rem;
 }
+
 .book-header {
   padding: 1rem;
   text-align: center;
 }
+
 .book-header-title {
   color: #100f0f;
   font-size: 1.2rem;
@@ -73,15 +85,18 @@ header {
   align-items: center;
   justify-content: center;
 }
+
 .book-illustration {
   display: none;
   width: 17rem;
   height: 17rem;
 }
+
 .recently-added {
   margin-top: 1rem;
   padding: 0rem 1rem;
 }
+
 .recently-added p {
   font-size: 0.9rem;
   color: #100f0f;
@@ -90,12 +105,14 @@ header {
   padding-bottom: 0.5rem;
   border-bottom: solid 1px rgb(128 128 128 / 30%);
 }
+
 .book-titles {
   display: flex;
   flex-direction: column;
   padding: 0 1rem;
   margin-bottom: 2rem;
 }
+
 .book-titles article {
   display: flex;
   width: 100%;
@@ -125,24 +142,25 @@ figure {
   margin-left: 1rem;
   width: 68%;
 }
+
 .section-image-1 p,
 .section-image-2 p,
 .section-image-3 p {
   font-size: 0.7rem;
   margin: 0.15rem 0;
 }
+
 .rating-1,
 .rating-2 {
-  filter: invert(89%) sepia(70%) saturate(7494%)
-    hue-rotate(327deg) brightness(105%) contrast(101%);
+  filter: invert(89%) sepia(70%) saturate(7494%) hue-rotate(327deg) brightness(105%) contrast(101%);
   width: 0.7rem;
   height: 0.7rem;
 }
+
 .rating-1-not {
   width: 0.7rem;
   height: 0.7rem;
-  filter: invert(100%) sepia(0%) saturate(7500%)
-    hue-rotate(315deg) brightness(103%) contrast(102%);
+  filter: invert(100%) sepia(0%) saturate(7500%) hue-rotate(315deg) brightness(103%) contrast(102%);
 }
 
 .book-1-image {
@@ -151,21 +169,25 @@ figure {
   margin-top: 0.5rem;
   background-position: center;
 }
+
 .book-2-image {
   background: url("/Images/twoTowers.jpg") no-repeat;
   background-size: contain;
   margin-top: 0.5rem;
   background-position: center;
 }
+
 .book-3-image {
   background: url("/Images/thereturnofKING.jpg") no-repeat;
   background-size: contain;
   background-position: center;
   margin-top: 0.5rem;
 }
+
 .book-1-rating-score {
   margin-top: 0.5rem;
 }
+
 .book-1-review-link,
 .book-2-review-link,
 .book-3-review-link {
@@ -173,11 +195,13 @@ figure {
   font-size: 0.7rem;
   align-self: flex-end;
 }
+
 .extras h3 {
   letter-spacing: 1px;
   margin-bottom: 0.5rem;
   font-size: 0.8rem;
 }
+
 .email-section {
   outline: none;
   border: none;
@@ -192,12 +216,14 @@ figure {
   font-size: 0.8rem;
   margin-bottom: 0.5rem;
 }
+
 .form {
   display: flex;
   flex-direction: column;
   margin-bottom: 0.7rem;
-  /* width: 80%; */
+
 }
+
 .submit-button {
   width: 7rem;
   padding: 0.4rem 0;
@@ -209,10 +235,12 @@ figure {
   border-radius: 3px;
   letter-spacing: 1px;
 }
+
 .submit-button:hover {
   cursor: pointer;
   background-color: #853316;
 }
+
 footer {
   text-align: center;
   word-spacing: 5px;
@@ -223,17 +251,20 @@ footer {
   position: absolute;
   bottom: -20px;
 }
+
 .footer-text {
   font-weight: bold;
-  color: #9b9893;
+  color: #EEEDED;
   padding-bottom: 0.5rem;
 }
+
 .form-tooltip {
   content: "";
   font-size: 0.75rem;
   letter-spacing: 1px;
   position: relative;
 }
+
 .form-feedback {
   background-color: aliceblue;
   max-width: 15rem;
@@ -242,11 +273,13 @@ footer {
   opacity: 0;
   padding: 0.5rem;
 }
+
 .form-response {
   animation-name: animatebottom;
   animation-duration: 1s;
   animation-fill-mode: forwards;
 }
+
 .quotes {
   padding: 0 1rem;
   height: 10rem;
@@ -265,6 +298,7 @@ footer {
   height: 1px;
   background-color: rgb(128 128 128 / 90%);
 }
+
 .quotes-text {
   font-size: 0.7rem;
   padding: 0.5rem 2rem;
@@ -277,6 +311,7 @@ footer {
     bottom: -1000px;
     opacity: 0;
   }
+
   to {
     bottom: 0;
     opacity: 1;
@@ -287,9 +322,11 @@ footer {
   .email-section {
     max-width: 400px;
   }
+
   .extras-news {
     max-width: 22rem;
   }
+
   .button-wrapper {
     max-width: 400px;
   }
@@ -300,21 +337,26 @@ footer {
     font-size: 2rem;
     line-height: 50px;
   }
+
   .book-illustration {
     display: block;
   }
+
   .footer-links {
     display: flex;
     flex-wrap: wrap;
   }
+
   .quotes h3 {
     font-size: 1rem;
   }
+
   .section-image-1 p,
   .section-image-2 p,
   .section-image-3 p {
     font-size: 1rem;
   }
+
   .extras {
     flex-basis: 100%;
   }

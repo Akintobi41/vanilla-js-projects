@@ -51,7 +51,7 @@ btn_next.addEventListener('click', callsNext)
 btn_prev.addEventListener('click', callsPrevious)
 
 function callsNext() {
-    if (exactPage < numPages(sectionData, 10)) exactPage++;
+    if (exactPage < numPages(sectionData, 5)) exactPage++;
     next(exactPage, sectionData, characterSection)
 }
 
@@ -64,16 +64,16 @@ function numPages(content, records_per_page) {
     return Math.ceil(content.length / records_per_page)
 }
 
-changePage(10, exactPage, sectionData, characterSection)
+changePage(5, exactPage, sectionData, characterSection)
 
 function next(page, data, wrapper) {
-    (page <= numPages(data, 10)) ?
-        (changePage(10, page, data, wrapper)) : false
+    (page <= numPages(data, 5)) ?
+        (changePage(5, page, data, wrapper)) : false
 }
 
 function previous(page, data, wrapper) {
     (page >= 1) ?
-        (changePage(10, page, data, wrapper)) : false
+        (changePage(5, page, data, wrapper)) : false
 }
 //
 
@@ -117,7 +117,7 @@ function genderUI(e) {
     })
 
     newArr.forEach((val, i) => _.characterCard(val, i, sectionData))
-    changePage(10, 1, sectionData, characterSection)
+    changePage(5, 1, sectionData, characterSection)
 }
 //
 // Search for content 
@@ -133,7 +133,7 @@ contentSearch.addEventListener('input', function (e) {
     sectionData = [];
     exactPage = 1;
     new_results.forEach((val, i) => _.characterCard(val, i, sectionData))
-    changePage(10, 1, sectionData, characterSection)
+    changePage(5, 1, sectionData, characterSection)
 
     footer.style.display = 'flex';
     if (!sectionData.length) {
