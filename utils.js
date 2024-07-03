@@ -41,20 +41,20 @@ export const characterCard = (hero, i, arr) => {
     // Adding attributes for the images
     img.setAttribute('alt', "gender-type")
     //
-    p_birth.textContent = `Birth: ${(hero.birth && hero.gender.toString() != 'NaN') ?
+    p_birth.textContent = `Birth: ${(hero.birth && hero.gender?.toString() != 'NaN') ?
         hero.gender : 'unknown'}`
-    p_gender.textContent = `Gender: ${(hero.gender && hero.gender.toString() != 'NaN') ?
+    p_gender.textContent = `Gender: ${(hero.gender && hero.gender?.toString() != 'NaN') ?
         hero.gender : 'unknown'}`;
-    p_race.textContent = `Race: ${(hero.race && hero.race.toString() != 'NaN') ?
+    p_race.textContent = `Race: ${(hero.race && hero.race?.toString() != 'NaN') ?
         hero.race : 'unknown'}`;
-    p_death.textContent = `Death: ${(hero.death && hero.death.toString() != 'NaN') ?
+    p_death.textContent = `Death: ${(hero.death && hero.death?.toString() != 'NaN') ?
         hero.death : 'unknown'}`
-    p_spouse.textContent = `Spouse: ${(hero.spouse && hero.spouse.toString() != 'NaN') ?
+    p_spouse.textContent = `Spouse: ${(hero.spouse && hero.spouse?.toString() != 'NaN') ?
         hero.spouse : 'unknown'}`
     p_more.textContent = 'view more...'
-    p_realm.textContent = `Realm: ${(hero.realm && hero.realm.toString() != 'NaN') ?
+    p_realm.textContent = `Realm: ${(hero.realm && hero.realm?.toString() != 'NaN') ?
         hero.realm : 'unknown'}`
-    p_hair.textContent = `Hair: ${(hero.hair && hero.hair.toString() != 'NaN') ?
+    p_hair.textContent = `Hair: ${(hero.hair && hero.hair?.toString() != 'NaN') ?
         hero.hair : 'unknown'}`
     // Appending elements
     append(header_section, img)
